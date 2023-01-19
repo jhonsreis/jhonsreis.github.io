@@ -33,10 +33,10 @@ h1{
 /* Índice */
 nav{
     position: absolute;
-    top: 120px;
-    right: 5%;
+    bottom: 5%;
+    right: 2%;
     background-color: var(--yale-blue);
-    opacity: 1;
+    opacity: 0.65;
     padding: 15px;
     color: var(--ivory);
     border: 1px ivory solid;
@@ -44,7 +44,7 @@ nav{
     width: 35px;
     height: 35px;
     text-align: center;
-    box-shadow: 5px 5px 25px black;
+    box-shadow: 5px 5px 15px black;
 }
 
 nav>#menu{
@@ -58,20 +58,22 @@ nav h2{
 
 nav ul{
     list-style: none;
-    padding: 0;
+    padding-left: 0;
+}
+
+nav ul li{
+    padding: 10px;
 }
 
 nav a{
     color: var(--ivory);
-    padding: 0 10px;
 }
 
 nav:hover{
     opacity: .9;
-    top: 120px;
-    right: 5%;
+    
     width: 190px;
-    height: 200px;
+    height: 300px;
     border-radius: 5px;
     box-shadow: 5px 5px 5px black;
 }
@@ -89,7 +91,7 @@ nav{
 }
 
 nav a:hover{
-    color: var(--pacific-blue);
+    color: var(--dark-sienna);
     font-size: 1.2em;
 }
 
@@ -123,11 +125,19 @@ nav a:hover{
     font-size: 20px;
 }
 
-
+/* Listas */
+ul{
+    list-style-type: " # ";
+    list-style-position: inside;
+}
 
 /* Habilidades */
 #habilidades{
     clear: both;
+}
+
+.li-habilidades{
+    font-size: 1.2em;
 }
 
 
