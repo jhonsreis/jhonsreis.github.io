@@ -4,38 +4,95 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <title>Meu portfólio Web</title>
 
 </head>
 <body>
-    <h1>Hello World!</h1>
-    <h1>Jhonatan da Silva Reis</h1>
-    <p>Mas pode me chamar de <em>Jhonatec</em>!</p>
-    <br>
-    <a href="minha-foto.jpg" target="_blank"><img src="minha-foto.jpg" alt="Minha foto segurando uma placa de computador" width="200px"></a>
-    <p>Sou estudante da Trybe e por muito tempo vivo de solucionar problemas de clientes e amigos.</p>
-    <p>Alguns projetos são iniciativas de ajudar uma necessidade específica, alguns foram apenas para diversão e curiosidade mesmo.</p>
-    <p>Amo o estilo <em>cientista maluco</em> de levar a vida!</p>
-    <br>
-    <h2>Algumas habilidades</h2>
-    <ul>
-        <li>Gostar de pensar e aprender sobre o funcionamento das coisas</li>
-        <li><strong>Disposição para ajudar</strong></li>
-        <li>Gosto de ensinar e trazer inovações para o ambiente em que estou</li>
-    </ul>
-    <br>
-    <h2>Como me encontrar</h2>
-    <a href="https://www.linkedin.com/in/jhonatec/" target="_blank">Linkedin</a>
-    <a href="https://www.youtube.com/c/_Jhonatec" target="_blank">YouTube</a>
-    <a href="https://www.instagram.com/_jhonatec" target="_blank">Instagram</a>
-    <br>
-    <hr>
-    <h2>Meus projetos</h2>
-    <ul>
-        <li>
-            <a href="#">SisIg</a>
-        </li>
-    </ul>
+    <div class="terminal">
+        <h1>$ Hello World!</h1>
+        <h1># Jhonatan da Silva Reis<span id="cursor-piscando">|<span></h1>
+    </div>
+
+    <nav>
+        <h2>...</h2>
+        <div id="menu">
+            <h3>O que vai encontrar por aqui</h3>
+            <ul>
+                <li>
+                    <a href="#sobre-mim">Sobre mim</a>
+                </li>
+                <li>
+                    <a href="#habilidades">Habilidades</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+                <li>
+                    <a href="#projetos">Projetos</a>
+                </li>
+            </ul>
+        </div>
+        
+    </nav>
+    
+    <div id="sobre-mim" class="secao">
+        <p id="apelido">Mas pode me chamar de <em>Jhonatec</em>!</p>
+        <p id="origem">Direto de São Félix de Minas/MG para o mundo!</p>
+        <br>
+        <a href="minha-foto.jpg" target="_blank"><img src="minha-foto.jpg" alt="Minha foto segurando uma placa de computador" width="180px"></a>
+        <p>Sou estudante da Trybe e por muito tempo vivo de solucionar problemas de clientes e amigos.</p>
+        <p>Alguns projetos são iniciativas de ajudar uma necessidade específica, alguns foram apenas para diversão e curiosidade mesmo.</p>
+        <p>Amo o estilo <em>cientista maluco</em> de levar a vida!</p>
+        <br>
+    </div>
+
+    <div id="habilidades" class="secao">
+        <h2>Algumas habilidades</h2>
+            <ul class="lista-habilidades">
+                <li class="li-habilidades">Gosto de pensar e aprender sobre o funcionamento das coisas</li>
+                <li class="li-habilidades"><strong>Disposição para ajudar</strong></li>
+                <li class="li-habilidades">Gosto de ensinar e trazer inovações para o ambiente em que estou</li>
+            </ul>
+            <br>
+    </div>
+    
+    
+    <div id="contato" class="secao">
+        <h2>Como me encontrar</h2>
+        <ul class="lista-contato">
+            <li>
+                <a href="https://www.linkedin.com/in/jhonatec/" target="_blank">Linkedin</a>
+            </li>
+            
+            <li>
+                <a href="https://www.youtube.com/c/_Jhonatec" target="_blank">YouTube</a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/_jhonatec" target="_blank">Instagram</a>
+            </li>
+            
+        </ul>
+    </div> 
+    
+    <div class="secao" id="projetos">
+        <h2>Meus projetos</h2>
+        <ul>
+            <li>
+                <a href="#">SisIg</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="secao">
+        <h2>Obrigado e volte sempre! ;-)</h2>
+        <p>Jhonatec -> Tecnologia que soluciona!</p>
+    </div>
+    
     
 </body>
 </html>
