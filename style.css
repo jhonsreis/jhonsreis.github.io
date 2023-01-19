@@ -32,8 +32,8 @@ h1{
 
 /* Índice */
 nav{
-    position: absolute;
-    bottom: 5%;
+    position: fixed;
+    bottom: 2%;
     right: 2%;
     background-color: var(--yale-blue);
     opacity: 0.65;
@@ -105,14 +105,6 @@ nav a:hover{
     border-radius: 5px;
 
 }
-.secao img{
-    border-radius: 50%;
-    float: left;
-    margin-right: 20px;
-    border: 5px solid var(--yale-blue);
-    box-shadow: 5px 5px 35px black;
-}
-
 
 /* Sobre mim */
 
@@ -124,6 +116,42 @@ nav a:hover{
     font-weight: 700;
     font-size: 20px;
 }
+
+/* div foto */
+
+#minha-foto{
+    /* background-color: rebeccapurple; */
+    padding: 20px;
+    float: left;
+    text-align: center;
+    margin-right: 10px;
+}
+
+#minha-foto>img{
+    max-width: 120px;
+    height: auto;
+    border-radius: 50%;
+    border: 5px solid var(--yale-blue);
+    box-shadow: 5px 5px 35px black;
+}
+
+#minha-foto div{
+    background-color: var(--yale-blue);
+    margin-top: 15px;
+    padding: 10px 40px;
+    border-radius: 7px;
+   
+}
+
+#minha-foto a{
+    color: var(--ivory);
+    text-decoration: none;
+}
+
+#quem-sou{
+    min-height: 150px;
+}
+
 
 /* Listas */
 ul{
