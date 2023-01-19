@@ -1,0 +1,147 @@
+/* CSS HEX gerados no site colors.co*/
+:root{
+    --yale-blue: #084b83ff;
+    --pacific-blue: #489fb5ff;
+    --ivory: #fbfff1ff;
+    --dark-sienna: #2e0f15ff;
+    --heliotrope-gray: #b0a1baff; 
+}
+
+body{
+    font-family: monospace;
+    background-color: var(--pacific-blue);
+    font-size: 16px;
+}
+
+/* Terminal com título */
+
+.terminal{
+    background-color: black;
+    color: var(--ivory);
+    padding: 20px 10px 50px;
+    border-radius: 10px;
+    border: var(--dark-sienna) 5px solid;
+    box-shadow: 20px 20px 30px var(--yale-blue);
+}
+
+h1{
+    font-family: 'Press Start 2P', monospace;
+    font-size: large;
+}
+
+
+/* Índice */
+nav{
+    position: absolute;
+    top: 120px;
+    right: 5%;
+    background-color: var(--yale-blue);
+    opacity: 1;
+    padding: 15px;
+    color: var(--ivory);
+    border: 1px ivory solid;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    box-shadow: 5px 5px 25px black;
+}
+
+nav>#menu{
+    display: none;
+} 
+
+nav h2{
+    font-size: x-large;
+    margin: 0 auto;
+}
+
+nav ul{
+    list-style: none;
+    padding: 0;
+}
+
+nav a{
+    color: var(--ivory);
+    padding: 0 10px;
+}
+
+nav:hover{
+    opacity: .9;
+    top: 120px;
+    right: 5%;
+    width: 190px;
+    height: 200px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px black;
+}
+
+nav:hover>h2{
+    display: none;
+}
+
+nav:hover>#menu{
+    display: block;
+}
+
+nav{
+    transition: all 200ms ease-in-out;
+}
+
+nav a:hover{
+    color: var(--pacific-blue);
+    font-size: 1.2em;
+}
+
+
+
+/* Código genérico para todas as seções */
+.secao{
+    margin: 25px auto;
+    background-color: var(--ivory);
+    padding: 30px 20px;
+    border-radius: 5px;
+
+}
+.secao img{
+    border-radius: 50%;
+    float: left;
+    margin-right: 20px;
+    border: 5px solid var(--yale-blue);
+    box-shadow: 5px 5px 35px black;
+}
+
+
+/* Sobre mim */
+
+#apelido{
+    font-size: 2em;
+}
+
+#origem{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+
+
+/* Habilidades */
+#habilidades{
+    clear: both;
+}
+
+
+/* Me deu uma ideia, mas não vou copiar código pronto, vou tentar fazer com minhas anotações da Codecademy e a documentação */
+/* Depois de quebrar cabeça, procurei no Stack overflow e descobri que a lógica que aplicaria no JavaScript é diferente na estrutura do  CSS */
+/* Referência para o código abaixo: https://stackoverflow.com/questions/16344354/how-to-make-blinking-flashing-text-with-css-3 */
+#cursor-piscando{
+    /* Aqui vou criar um efeito de onde o caractere | vai ficar piscando */
+
+    animation: piscar 1s linear 0.2s infinite;
+}
+
+@keyframes piscar {
+    50%{
+        opacity: 0;
+    }
+}
