@@ -32,8 +32,8 @@ h1{
 
 /* Índice */
 nav{
-    position: absolute;
-    bottom: 5%;
+    position: fixed;
+    bottom: 2%;
     right: 2%;
     background-color: var(--yale-blue);
     opacity: 0.65;
