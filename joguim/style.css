@@ -13,6 +13,7 @@ main {
   height: calc(100vh - 60px);
   display: flex;
   align-items: flex-end;
+  padding-left: 50px;
 }
 
 footer {
@@ -38,10 +39,14 @@ footer {
 }
 
 .down {
-  animation: toDown .5s ease-in;
+  animation: toDown 10s ease-in;
 }
 
 #game {}
+
+.paused{
+  animation-play-state: paused;
+}
 
 
 @keyframes toJump {
@@ -67,11 +72,11 @@ footer {
     height: 150px;
   }
 
-  25% {
+  1% {
     height: 70px;
   }
 
-  50% {
+  95% {
     height: 70px;
   }
 
