@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(25, 25, 25);
+}
+
+main {
+  background-color: aquamarine;
+  height: calc(100vh - 60px);
+  display: flex;
+  align-items: flex-end;
+}
+
+footer {
+
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+
+}
+
+#jhonatec {
+  width: 100px;
+  height: 150px;
+  background-color: rgb(73, 28, 196);
+  color: white;
+  text-align: center;
+}
+
+.jump {
+  animation: toJump .5s ease-in;
+}
+
+.down {
+  animation: toDown .5s ease-in;
+}
+
+#game {}
+
+
+@keyframes toJump {
+  0% {
+    margin-bottom: 0;
+  }
+
+  25% {
+    margin-bottom: 250px;
+  }
+
+  65% {
+    margin-bottom: 250px;
+  }
+
+  100% {
+    margin-bottom: 0;
+  }
+}
+
+@keyframes toDown {
+  0% {
+    height: 150px;
+  }
+
+  25% {
+    height: 70px;
+  }
+
+  50% {
+    height: 70px;
+  }
+
+  100% {
+    height: 150px;
+  }
+}
