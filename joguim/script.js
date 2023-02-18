@@ -1,17 +1,20 @@
 const jhonatec = document.getElementById('jhonatec');
 const main = document.querySelector('main');
 const message = document.getElementById('message');
+let monitoreId;
 
 
 const playPause = () => {
 
-  if(message.style.display !== 'none'){
+  if (message.style.display !== 'none') {
     message.style.display = 'none';
+    monitoreId = setInterval(monitore, 100);
     for (const child of main.children) {
       child.style.animationPlayState = 'running';
     }
-  } else{
+  } else {
     message.style.display = 'flex';
+    clearInterval(monitoreId);
     for (const child of main.children) {
       child.style.animationPlayState = 'paused';
     }
@@ -46,7 +49,18 @@ const keyUpToDown = (event) => {
   }
 };
 const monitore = () => {
-  console.log('teste...', Date.now());
+  const objects = main.children;
+  const marginBottomJhonatec = parseInt(window.getComputedStyle(jhonatec).marginBottom);
+
+
+  const floorObject = document.querySelector('.floor-object');
+  const leftFloorObject = parseInt(window.getComputedStyle(floorObject).left);
+  console.log('jhonatec', marginBottomJhonatec, 'obj', leftFloorObject);
+
+  if (marginBottomJhonatec <= 80 && (leftFloorObject > 70 && leftFloorObject < 240)) {
+    playPause();
+  }
+
 }
 
 const createObjects = () => {
@@ -59,15 +73,19 @@ const createObjects = () => {
   object2.className = 'float-object';
   main.appendChild(object2);
   object2.classList.add('move-object');
-  object2.style.animationDelay = '1.4s';
+  object2.style.animationDelay = '2.4s';
 
   const object3 = document.createElement('div');
   object3.className = 'float-object-sm';
   main.appendChild(object3);
   object3.classList.add('move-object');
-  object3.style.animationDelay = '.6s';
+  object3.style.animationDelay = '1s';
 
-  setInterval(monitore, 500)
+  for (const child of main.children) {
+    child.style.animationPlayState = 'paused';
+  }
+
+  
 }
 
 window.onload = () => {

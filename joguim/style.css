@@ -33,7 +33,6 @@ main {
   height: calc(100vh - 60px);
   display: flex;
   align-items: flex-end;
-  padding-left: 10%;
   overflow: hidden;
   width: 100vw;
 }
@@ -54,6 +53,7 @@ footer {
   background-color: rgb(73, 28, 196);
   color: white;
   text-align: center;
+  margin-left: 150px;
 }
 
 .jump {
@@ -93,7 +93,7 @@ footer {
 }
 
 .move-object {
-  animation: toMoveObject 3s infinite ease-in;
+  animation: toMoveObject 5s infinite ease-in;
 
 }
 
@@ -137,7 +137,7 @@ footer {
   }
 
   100% {
-    right: 100%;
+    right: 200%;
   }
 
 }
