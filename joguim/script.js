@@ -1,14 +1,16 @@
 const jhonatec = document.getElementById('jhonatec');
 const main = document.querySelector('main');
-const message = document.getElementById('message');
-let monitoreId;
+const message = document.getElementById('mensagem');
+const switchMusic = document.getElementById('switch-music');
+const spanPontos = document.getElementById('pontos');
 
+let monitoreId;
+let pontos = 0;
 
 const playPause = () => {
-
   if (message.style.display !== 'none') {
     message.style.display = 'none';
-    monitoreId = setInterval(monitore, 100);
+    monitoreId = setInterval(monitore, 50);
     for (const child of main.children) {
       child.style.animationPlayState = 'running';
     }
@@ -21,19 +23,29 @@ const playPause = () => {
   }
 };
 
+const jump = () => {
+  jhonatec.className = 'jump';
+  jhonatec.style.backgroundImage = 'url(\'images/jump.gif\')';
+}
+
+const crouch = () => {
+  jhonatec.className = 'crouch';
+  jhonatec.style.backgroundImage = 'url(\'images/down.gif\')';
+}
+
 const moveJhonatec = (event) => {
   console.log(event.keyCode);
   switch (event.keyCode) {
-    case 32:
+    case 80:
       playPause();
       break;
     case 38:
     case 87:
-      jhonatec.className = 'jump';
+      jump();
       break;
     case 40:
     case 83:
-      jhonatec.className = 'down';
+      crouch();
       break;
   }
 
@@ -41,42 +53,83 @@ const moveJhonatec = (event) => {
 
 const restoreJhonatec = (event) => {
   jhonatec.className = '';
+  jhonatec.style.backgroundImage = 'url(\'images/caminhando.gif\')';
 }
 
-const keyUpToDown = (event) => {
+const releaseCrouchKey = (event) => {
   if (event.keyCode === 40) {
-    jhonatec.className = '';
+    restoreJhonatec();
   }
 };
+
+const gameOver = () => {
+
+  if (localStorage.getItem('best') !== null) {
+    const bestPontosLS = parseInt(localStorage.getItem('best'));
+    if (pontos > bestPontosLS) {
+      localStorage.setItem('best', pontos);
+    }
+  } else {
+    localStorage.setItem('best', pontos);
+  }
+
+  playPause();
+
+  const objs = document.querySelectorAll('.obj');
+  for (const obj of objs) {
+    main.removeChild(obj);
+  }
+
+  pontos = 0;
+
+  createObjects();
+
+}
+ 
 const monitore = () => {
-  const objects = main.children;
+  pontos += 1;
+  spanPontos.innerHTML = pontos;
+
   const marginBottomJhonatec = parseInt(window.getComputedStyle(jhonatec).marginBottom);
-
-
+  
   const floorObject = document.querySelector('.floor-object');
   const leftFloorObject = parseInt(window.getComputedStyle(floorObject).left);
-  console.log('jhonatec', marginBottomJhonatec, 'obj', leftFloorObject);
 
-  if (marginBottomJhonatec <= 80 && (leftFloorObject > 70 && leftFloorObject < 240)) {
-    playPause();
+  const floatObject = document.querySelector('.float-object');
+  const leftFloatObject = parseInt(window.getComputedStyle(floatObject).left);
+
+  const floatObjectSM = document.querySelector('.float-object-sm');
+  const leftFloatObjectSM = parseInt(window.getComputedStyle(floatObjectSM).left);
+
+  if (leftFloorObject > 70 && leftFloorObject < 240) {
+    if (marginBottomJhonatec <= 80)
+      gameOver();
+  }
+  if (leftFloatObject > 0 && leftFloatObject < 240) {
+    if (jhonatec.className !== 'crouch')
+      gameOver();
+  }
+  if (leftFloatObjectSM > 70 && leftFloatObjectSM < 240) {
+    if (jhonatec.className !== 'crouch' && marginBottomJhonatec <= 150)
+      gameOver();
   }
 
 }
 
 const createObjects = () => {
   const object = document.createElement('div');
-  object.className = 'floor-object';
+  object.className = 'floor-object obj';
   main.appendChild(object);
   object.classList.add('move-object');
 
   const object2 = document.createElement('div');
-  object2.className = 'float-object';
+  object2.className = 'float-object obj';
   main.appendChild(object2);
   object2.classList.add('move-object');
   object2.style.animationDelay = '2.4s';
 
   const object3 = document.createElement('div');
-  object3.className = 'float-object-sm';
+  object3.className = 'float-object-sm obj';
   main.appendChild(object3);
   object3.classList.add('move-object');
   object3.style.animationDelay = '1s';
@@ -84,13 +137,31 @@ const createObjects = () => {
   for (const child of main.children) {
     child.style.animationPlayState = 'paused';
   }
-
-  
 }
+
+const playMusic = () => {
+  const music = document.getElementById('music');
+  if (switchMusic.className !== 'button-visited') {
+    switchMusic.className = 'button-visited';
+    music.play();
+  } else {
+    switchMusic.className = '';
+    music.pause();
+  }
+};
+
+const loadBestPontos = () => {
+  if (localStorage.getItem('best') !== null) {
+    const bestPontos = document.getElementById('best');
+    bestPontos.innerHTML = localStorage.getItem('best');
+  }
+};
 
 window.onload = () => {
   document.addEventListener('keydown', moveJhonatec);
-  document.addEventListener('keyup', keyUpToDown);
+  document.addEventListener('keyup', releaseCrouchKey);
   jhonatec.addEventListener('animationend', restoreJhonatec);
+  switchMusic.addEventListener('click', playMusic);
+  loadBestPontos();
   createObjects();
 };
