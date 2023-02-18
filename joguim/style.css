@@ -9,7 +9,7 @@ body {
   font-family: monospace;
 }
 
-#message {
+#mensagem {
   background-color: rgb(25, 25, 25, .85);
   border-radius: 10px;
   padding: 30px;
@@ -25,43 +25,96 @@ body {
   justify-content: center;
   align-items: center;
   gap: 20px;
+  font-size: larger;
+}
+
+#pontuacao{
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.336);
+  border-radius: 10px;
+  font-weight: 600;
+  pointer-events: none;
+  padding: 30px;
+  text-align: center;
+  font-size: large;
+}
+
+#switch-music{
+  background-color: aquamarine;
+  padding: 10px;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+}
+
+#switch-music:active{
+  background-color: rgb(50, 171, 131);
+}
+
+.button-visited{
+  background-color: rgb(27, 104, 78) !important;
+  border: 2px solid white !important;
+  color: white !important;
+  box-shadow: 2px 2px 10px white;
+}
+
+#background{
+  pointer-events: none;
+  position: absolute;
+  bottom: 100px;
+  width: 100%;
+  height: 500px;
+  z-index: 0;
+
+  background-color: rgb(200, 251, 188);
+}
+
+#background img{
+  width: 100%;
+  height: 100%;
 }
 
 
 main {
-  background-color: aquamarine;
-  height: calc(100vh - 60px);
+  background-color: rgb(83, 162, 204);
+  height: calc(100vh - 100px);
   display: flex;
   align-items: flex-end;
   overflow: hidden;
   width: 100vw;
+  padding-bottom: 45px;
 }
 
 footer {
-
   color: white;
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 60px;
-
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 100px;
 }
 
 #jhonatec {
-  width: 100px;
-  height: 150px;
-  background-color: rgb(73, 28, 196);
+  width: 80px;
+  height: 200px;
+  /* background-color: rgb(73, 28, 196); */
   color: white;
   text-align: center;
   margin-left: 150px;
+  position: relative;
+  background-image: url('images/caminhando.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .jump {
   animation: toJump .6s ease-in;
 }
 
-.down {
-  animation: toDown 5s;
+.crouch {
+  animation: toCrouch 5s;
 }
 
 #game {}
@@ -77,10 +130,10 @@ footer {
 .float-object {
   background-color: yellow;
   width: 160px;
-  height: 80px;
-  right: -200px;
+  height: 230px;
+  right: 0;
   position: absolute;
-  bottom: 150px;
+  margin-bottom: 130px;
 }
 
 .float-object-sm {
@@ -89,7 +142,7 @@ footer {
   height: 80px;
   position: absolute;
   right: 0;
-  bottom: 150px;
+  margin-bottom: 100px;
 }
 
 .move-object {
@@ -113,21 +166,21 @@ footer {
 
 }
 
-@keyframes toDown {
+@keyframes toCrouch {
   0% {
-    height: 150px;
+    height: 200px;
   }
 
   1% {
-    height: 70px;
+    height: 90px;
   }
 
   95% {
-    height: 70px;
+    height: 90px;
   }
 
   100% {
-    height: 150px;
+    height: 200px;
   }
 }
 
