@@ -3,6 +3,7 @@ const main = document.querySelector('main');
 const message = document.getElementById('mensagem');
 const switchMusic = document.getElementById('switch-music');
 const spanPontos = document.getElementById('pontos');
+const music = document.getElementById('music');
 const jumpSound = document.getElementById('jump-sound')
 const crashSound = document.getElementById('crash-sound');
 const titleGameOver = document.getElementById('game-over');
@@ -84,11 +85,10 @@ const gameOver = () => {
   for (const obj of objs) {
     main.removeChild(obj);
   }
-
   pontos = 0;
-
-  gameOverId = setInterval(playPause, 300);
+  playPause();
   createObjects();
+  loadBestPontos();
 
 }
 
@@ -146,10 +146,12 @@ const createObjects = () => {
   for (const child of main.children) {
     child.style.animationPlayState = 'paused';
   }
+
+  music.play();
 }
 
 const playMusic = () => {
-  const music = document.getElementById('music');
+
   if (switchMusic.className !== 'button-visited') {
     switchMusic.className = 'button-visited';
     music.play();
