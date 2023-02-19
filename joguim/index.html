@@ -11,6 +11,8 @@
 
 <body>
   <header id="mensagem">
+    <h1 id="game-over">Game Over, tente outra vez!</h1>
+    <img src="images/principal.gif" alt="Jhonatec pulando">
     <h1>Jump Jhonatec</h1>
     <h3>Ajude o Jhonatec não perder a aula ao vivo no Zoom!</h3>
     <p>Para pular, use [&UpArrow;] ou [W]</p>
@@ -33,8 +35,12 @@
     <p>Criado por Jhonatec em feveaeiro de 2023.</p>
     <button id="switch-music">Música de fundo</button>
   </footer>
+  <aside>
+    <audio id="crash-sound" src="music/crash.mp3">Not Compatible</audio>
+    <audio id="music" src="music/JavaScriptation.mp3" loop>Not Compatible</audio>
+    <audio id="jump-sound" src="music/jump.ogg">Not Compatible</audio>
+  </aside>
   <script src="script.js"></script>
-  <audio id="music" src="music/JavaScriptation.mp3" loop>Not Compatible</audio>
 </body>
 
 </html>

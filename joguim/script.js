@@ -3,11 +3,14 @@ const main = document.querySelector('main');
 const message = document.getElementById('mensagem');
 const switchMusic = document.getElementById('switch-music');
 const spanPontos = document.getElementById('pontos');
+const jumpSound = document.getElementById('jump-sound')
+const crashSound = document.getElementById('crash-sound');
 
-let monitoreId;
+let monitoreId, gameOverId;
 let pontos = 0;
 
 const playPause = () => {
+  clearInterval(gameOverId);
   if (message.style.display !== 'none') {
     message.style.display = 'none';
     monitoreId = setInterval(monitore, 50);
@@ -24,6 +27,7 @@ const playPause = () => {
 };
 
 const jump = () => {
+  jumpSound.play();
   jhonatec.className = 'jump';
   jhonatec.style.backgroundImage = 'url(\'images/jump.gif\')';
 }
@@ -63,7 +67,7 @@ const releaseCrouchKey = (event) => {
 };
 
 const gameOver = () => {
-
+  crashSound.play();
   if (localStorage.getItem('best') !== null) {
     const bestPontosLS = parseInt(localStorage.getItem('best'));
     if (pontos > bestPontosLS) {
@@ -73,7 +77,9 @@ const gameOver = () => {
     localStorage.setItem('best', pontos);
   }
 
-  playPause();
+  const titleGameOver = document.getElementById('game-over');
+  titleGameOver.style.display = 'block';
+
 
   const objs = document.querySelectorAll('.obj');
   for (const obj of objs) {
@@ -82,16 +88,17 @@ const gameOver = () => {
 
   pontos = 0;
 
+  gameOverId = setInterval(playPause, 300);
   createObjects();
 
 }
- 
+
 const monitore = () => {
   pontos += 1;
   spanPontos.innerHTML = pontos;
 
   const marginBottomJhonatec = parseInt(window.getComputedStyle(jhonatec).marginBottom);
-  
+
   const floorObject = document.querySelector('.floor-object');
   const leftFloorObject = parseInt(window.getComputedStyle(floorObject).left);
 
@@ -102,16 +109,19 @@ const monitore = () => {
   const leftFloatObjectSM = parseInt(window.getComputedStyle(floatObjectSM).left);
 
   if (leftFloorObject > 70 && leftFloorObject < 240) {
-    if (marginBottomJhonatec <= 80)
+    if (marginBottomJhonatec <= 80) {
       gameOver();
+    }
   }
   if (leftFloatObject > 0 && leftFloatObject < 240) {
-    if (jhonatec.className !== 'crouch')
+    if (jhonatec.className !== 'crouch') {
       gameOver();
+    }
   }
   if (leftFloatObjectSM > 70 && leftFloatObjectSM < 240) {
-    if (jhonatec.className !== 'crouch' && marginBottomJhonatec <= 150)
+    if (jhonatec.className !== 'crouch' && marginBottomJhonatec <= 150) {
       gameOver();
+    }
   }
 
 }
@@ -164,4 +174,5 @@ window.onload = () => {
   switchMusic.addEventListener('click', playMusic);
   loadBestPontos();
   createObjects();
+  crashSound = document.getElementById('crash');
 };
