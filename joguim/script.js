@@ -1,18 +1,19 @@
 const jhonatec = document.getElementById('jhonatec');
 const main = document.querySelector('main');
 const message = document.getElementById('mensagem');
-const switchMusic = document.getElementById('switch-music');
+const btnsMusic = document.querySelectorAll('.btn-music');
 const spanPontos = document.getElementById('pontos');
 const music = document.getElementById('music');
 const jumpSound = document.getElementById('jump-sound')
 const crashSound = document.getElementById('crash-sound');
 const titleGameOver = document.getElementById('game-over');
 
-let monitoreId, gameOverId;
+let monitoreId;
 let pontos = 0;
+const initialHeight = '200px';
+const crouchedHeight = '95px';
 
 const playPause = () => {
-  clearInterval(gameOverId);
   if (message.style.display !== 'none') {
     message.style.display = 'none';
     titleGameOver.style.display = 'none';
@@ -36,8 +37,9 @@ const jump = () => {
 }
 
 const crouch = () => {
-  jhonatec.className = 'crouch';
   jhonatec.style.backgroundImage = 'url(\'images/down.gif\')';
+  jhonatec.className = 'crouch';
+  jhonatec.style.height = crouchedHeight;
 }
 
 const moveJhonatec = (event) => {
@@ -60,6 +62,7 @@ const moveJhonatec = (event) => {
 
 const restoreJhonatec = (event) => {
   jhonatec.className = '';
+  jhonatec.style.height = initialHeight;
   jhonatec.style.backgroundImage = 'url(\'images/caminhando.gif\')';
 }
 
@@ -71,13 +74,13 @@ const releaseCrouchKey = (event) => {
 
 const gameOver = () => {
   crashSound.play();
-  if (localStorage.getItem('best') !== null) {
-    const bestPontosLS = parseInt(localStorage.getItem('best'));
+  if (localStorage.getItem('bestJumpJhonatec') !== null) {
+    const bestPontosLS = JSON.parse(localStorage.getItem('bestJumpJhonatec'));
     if (pontos > bestPontosLS) {
-      localStorage.setItem('best', pontos);
+      localStorage.setItem('bestJumpJhonatec', JSON.stringify(pontos));
     }
   } else {
-    localStorage.setItem('best', pontos);
+    localStorage.setItem('bestJumpJhonatec', JSON.stringify(pontos));
   }
 
   titleGameOver.style.display = 'block';
@@ -147,25 +150,30 @@ const createObjects = () => {
     child.style.animationPlayState = 'paused';
   }
 
-  
+
 
 }
 
-const playMusic = () => {
+const playMusic = (event) => {
 
-  if (switchMusic.className !== 'button-visited') {
-    switchMusic.className = 'button-visited';
-    music.play();
-  } else {
-    switchMusic.className = '';
+  if (event.target.classList.contains('button-visited')) {
     music.pause();
+    for (const btn of btnsMusic) {
+      btn.classList.remove('button-visited');
+    }
+  }
+  else {
+    music.play();
+    for (const btn of btnsMusic) {
+      btn.classList.add('button-visited');
+    }
   }
 };
 
 const loadBestPontos = () => {
-  if (localStorage.getItem('best') !== null) {
+  if (localStorage.getItem('bestJumpJhonatec') !== null) {
     const bestPontos = document.getElementById('best');
-    bestPontos.innerHTML = localStorage.getItem('best');
+    bestPontos.innerHTML = localStorage.getItem('bestJumpJhonatec');
   }
 };
 
@@ -173,8 +181,9 @@ window.onload = () => {
   document.addEventListener('keydown', moveJhonatec);
   document.addEventListener('keyup', releaseCrouchKey);
   jhonatec.addEventListener('animationend', restoreJhonatec);
-  switchMusic.addEventListener('click', playMusic);
+  for (const btn of btnsMusic) {
+    btn.addEventListener('click', playMusic);
+  }
   loadBestPontos();
   createObjects();
-  switchMusic.click();
 };
