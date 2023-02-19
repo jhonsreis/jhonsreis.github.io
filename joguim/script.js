@@ -5,6 +5,7 @@ const switchMusic = document.getElementById('switch-music');
 const spanPontos = document.getElementById('pontos');
 const jumpSound = document.getElementById('jump-sound')
 const crashSound = document.getElementById('crash-sound');
+const titleGameOver = document.getElementById('game-over');
 
 let monitoreId, gameOverId;
 let pontos = 0;
@@ -13,6 +14,7 @@ const playPause = () => {
   clearInterval(gameOverId);
   if (message.style.display !== 'none') {
     message.style.display = 'none';
+    titleGameOver.style.display = 'none';
     monitoreId = setInterval(monitore, 50);
     for (const child of main.children) {
       child.style.animationPlayState = 'running';
@@ -61,7 +63,7 @@ const restoreJhonatec = (event) => {
 }
 
 const releaseCrouchKey = (event) => {
-  if (event.keyCode === 40) {
+  if (event.keyCode === 40 || event.keyCode === 83) {
     restoreJhonatec();
   }
 };
@@ -77,10 +79,7 @@ const gameOver = () => {
     localStorage.setItem('best', pontos);
   }
 
-  const titleGameOver = document.getElementById('game-over');
   titleGameOver.style.display = 'block';
-
-
   const objs = document.querySelectorAll('.obj');
   for (const obj of objs) {
     main.removeChild(obj);
@@ -174,5 +173,4 @@ window.onload = () => {
   switchMusic.addEventListener('click', playMusic);
   loadBestPontos();
   createObjects();
-  crashSound = document.getElementById('crash');
 };
