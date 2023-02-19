@@ -16,10 +16,10 @@ body {
   border-radius: 10px;
   padding: 30px;
   color: white;
-  width: 80%;
-  height: 80%;
+  width: 500px;
+  height: 750px;
   position: absolute;
-  left: 10%;
+  left: 35%;
   top: 5%;
   z-index: 1;
   display: flex;
@@ -46,7 +46,7 @@ body {
 
 #pontuacao{
   position: absolute;
-  top: 80px;
+  top: 10px;
   right: 10px;
   background-color: rgba(0, 0, 0, 0.336);
   border-radius: 10px;
@@ -84,8 +84,10 @@ body {
   width: 100%;
   height: 500px;
   z-index: 0;
-
-  background-color: rgb(200, 251, 188);
+  display: flex;
+  background-image: url('images/background.gif');
+  background-repeat: repeat-x;
+  background-position: bottom;
 }
 
 #background img{
@@ -100,7 +102,7 @@ main {
   display: flex;
   align-items: flex-end;
   overflow: hidden;
-  width: 100vw;
+  min-width: 800px;
   padding-bottom: 45px;
 }
 
@@ -121,7 +123,7 @@ footer {
   /* background-color: rgb(73, 28, 196); */
   color: white;
   text-align: center;
-  margin-left: 150px;
+  margin-left: 100px;
   position: relative;
   background-image: url('images/caminhando.gif');
   background-size: cover;
@@ -165,8 +167,7 @@ footer {
 }
 
 .move-object {
-  animation: toMoveObject 5s infinite ease-in;
-
+  animation: toMoveObject 6s infinite ease-in;
 }
 
 /* ANimations */
