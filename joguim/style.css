@@ -122,10 +122,9 @@ footer {
 #jhonatec {
   width: 80px;
   height: 200px;
-  /* background-color: rgb(73, 28, 196); */
   color: white;
   text-align: center;
-  margin-left: 100px;
+  margin-left: 40px;
   position: relative;
   background-image: url('images/caminhando.gif');
   background-size: cover;
@@ -137,40 +136,34 @@ footer {
 }
 
 .crouch {
-  /* animation: toCrouch 5s; */
   height: 90px;
 }
 
-#game {}
 
 .floor-object {
   background-color: red;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   position: absolute;
   right: 0;
 }
 
 .float-object {
   background-color: yellow;
-  width: 160px;
-  height: 230px;
+  width: 130px;
+  height: 250px;
   right: 0;
   position: absolute;
   margin-bottom: 130px;
 }
 
-.float-object-sm {
+.mid-float-object {
   background-color: pink;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   position: absolute;
   right: 0;
   margin-bottom: 100px;
-}
-
-.move-object {
-  animation: toMoveObject 6s infinite ease-in;
 }
 
 /* ANimations */
@@ -185,27 +178,6 @@ footer {
 
   65% {
     margin-bottom: 250px;
-  }
-
-}
-
-@keyframes toCrouch {
-  0% {
-    height: 90px;
-  }
-
-  95% {
-    height: 90px;
-  }
-}
-
-@keyframes toMoveObject {
-  0% {
-    right: 0%;
-  }
-
-  100% {
-    right: 200%;
   }
 
 }
