@@ -107,17 +107,17 @@ const monitore = () => {
   const floatObjectSM = document.querySelector('.float-object-sm');
   const leftFloatObjectSM = parseInt(window.getComputedStyle(floatObjectSM).left);
 
-  if (leftFloorObject > 70 && leftFloorObject < 240) {
+  if (leftFloorObject > 70 && leftFloorObject < 200) {
     if (marginBottomJhonatec <= 80) {
       gameOver();
     }
   }
-  if (leftFloatObject > 0 && leftFloatObject < 240) {
+  if (leftFloatObject > 0 && leftFloatObject < 200) {
     if (jhonatec.className !== 'crouch') {
       gameOver();
     }
   }
-  if (leftFloatObjectSM > 70 && leftFloatObjectSM < 240) {
+  if (leftFloatObjectSM > 70 && leftFloatObjectSM < 200) {
     if (jhonatec.className !== 'crouch' && marginBottomJhonatec <= 150) {
       gameOver();
     }
@@ -147,7 +147,8 @@ const createObjects = () => {
     child.style.animationPlayState = 'paused';
   }
 
-  music.play();
+  
+
 }
 
 const playMusic = () => {
@@ -175,4 +176,5 @@ window.onload = () => {
   switchMusic.addEventListener('click', playMusic);
   loadBestPontos();
   createObjects();
+  switchMusic.click();
 };
