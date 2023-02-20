@@ -8,11 +8,11 @@ const jumpSound = document.getElementById('jump-sound')
 const crashSound = document.getElementById('crash-sound');
 const panelGameOver = document.getElementById('game-over');
 
-let monitoreId, aceleraId;
+let monitoreId, aceleraId, lintID;
 let pontos = 0;
 const initialHeight = '200px';
 const crouchedHeight = '95px';
-let minTime = 30, maxTime = 80, toMove = 20, targetTime = 80, timeCounter = 0;
+let minTime = 30, maxTime = 80, toMove = 20, targetTime = 0, timeCounter = 0;
 let classGameOver = '';
 
 
@@ -24,8 +24,6 @@ const playPause = () => {
   if (message.style.display !== 'none' || panelGameOver.style.display !== 'none') {
     message.style.display = 'none';
     panelGameOver.style.display = 'none';
-    // if (document.querySelectorAll('.obj').length === 0)
-    //   generateObjects();
     monitoreId = setInterval(moveObjects, 60);
     aceleraId = setInterval(acelera, 8000);
   } else {
@@ -117,6 +115,9 @@ const gameOver = () => {
   }else if(classGameOver.includes('storm')){
     mensagemPersonalizada = 'OLHA O RAIOOOOO!!!';
     classFinal = 'storm';
+  } else{
+    mensagemPersonalizada = 'Se está lutando contra o Lint, está pronto para aula! Parabéns!';
+    // Disparar animação final
   }
 
   document.getElementById('game-over-obj').classList.add(classFinal);
@@ -136,6 +137,7 @@ const gameOver = () => {
   minTime = 30;
   maxTime = 80;
   toMove = 20;
+  targetTime = 50;
 };
 
 // ################################################################################
@@ -166,6 +168,10 @@ const generateObjects = () => {
     targetTime = maxTime + 2;
   } else {
     targetTime = generateRandomNum(maxTime) + generateRandomNum(maxTime - 2);
+  }
+
+  if(Math.floor(pontos / 4) > 500){
+    addLint();
   }
 };
 
@@ -210,6 +216,7 @@ const moveObjects = () => {
   timeCounter += 1;
   pontos += 1;
   spanPontos.innerHTML = Math.floor(pontos / 4);
+
   if (timeCounter > targetTime) {
     generateObjects();
     timeCounter = 0;
@@ -251,6 +258,36 @@ const acelera = () => {
   }
 };
 
+const addLint = () => {
+  const linter = document.createElement('div');
+  linter.id = 'lint-object';
+  linter.classList.add('lint-final');
+  const h3 = document.createElement('h3');
+  h3.innerHTML = 'PESADELO LINT';
+  linter.appendChild(h3);
+  main.appendChild(linter);
+  // Parar fluxo do jogo
+  clearInterval(acelera);
+  targetTime = 1000;
+
+  lintID = setInterval(moveLint, 100);
+}
+
+const moveLint = () => {
+  if(document.querySelectorAll('.obj').length === 0){
+    const linter = document.getElementById('lint-object');
+    let newPos = parseInt(window.getComputedStyle(linter).right) + 5;
+    console.log(`${newPos}px`);
+    linter.style.right = `${newPos}px`;
+    // Provocar um gamer over com finale
+    if(newPos > window.innerWidth - 400){
+      gameOver();
+      clearInterval(lintID);
+      classGameOver = 'lint-object';
+    }
+  }
+}
+
 
 window.onload = () => {
   document.addEventListener('keydown', moveJhonatec);
@@ -260,8 +297,9 @@ window.onload = () => {
     btn.addEventListener('click', playMusic);
   }
   loadBestPontos();
-  // createObjects();
   minTime = 30;
   maxTime = 80;
   toMove = 20;
+  targetTime = 50;
+  document.getElementById('btn-final').addEventListener('click', addLint);
 };
