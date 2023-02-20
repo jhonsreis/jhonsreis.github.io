@@ -8,6 +8,11 @@ const jumpSound = document.getElementById('jump-sound')
 const crashSound = document.getElementById('crash-sound');
 const panelGameOver = document.getElementById('game-over');
 
+const backColor0 = 'rgb(83, 162, 204)';
+const backColor1 = 'rgb(149 173 170)';
+const backColor2 = 'rgb(210 179 136)';
+const backColor3 = 'rgb(160 88 50)';
+
 let monitoreId, aceleraId, lintID;
 let pontos = 0;
 const initialHeight = '200px';
@@ -183,8 +188,20 @@ const generateObjects = () => {
     targetTime = generateRandomNum(maxTime) + generateRandomNum(maxTime - 2);
   }
 
-  if (Math.floor(pontos / 4) > 1000) {
+  const pontosAtuais = Math.floor(pontos / 4);
+
+  if (pontosAtuais > 1000) {
     addLint();
+  } else if (pontosAtuais > 35) {
+    document.querySelector('body').style.backgroundColor = backColor3;
+    document.querySelector('#background').style.filter = 'invert(100%)';
+  } else if (pontosAtuais > 25) {
+    document.querySelector('body').style.backgroundColor = backColor2;
+    document.querySelector('#background').style.filter = 'sepia(100%)';
+  }
+  else if (pontosAtuais > 5) {
+    document.querySelector('body').style.backgroundColor = backColor1;
+    document.querySelector('#background').style.filter = 'sepia(50%)';
   }
 };
 
@@ -309,7 +326,7 @@ function restart() {
   maxTime = 80;
   toMove = 20;
   targetTime = 50;
-  
+
   const objs = document.querySelectorAll('.obj');
   for (const obj of objs) {
     main.removeChild(obj);
@@ -319,13 +336,20 @@ function restart() {
   if (lintObject !== null)
     main.removeChild(lintObject);
 
+  document.querySelector('body').style.backgroundColor = backColor0;
+  document.querySelector('#background').style.filter = '';
+
+  if(btnsMusic[0].classList.contains('button-visited')){
+    music.currentTime = 0;
+  }
+
 }
 
-function restartFromLint(){
+function restartFromLint() {
   restart();
   jhonatec.style.display = 'block';
   document.getElementById('game-over-obj').className = '';
-    // Remover finales
+  // Remover finales
   const jhonatecFinale = document.getElementById('jhonatec-finale');
   if (jhonatecFinale !== null)
     main.removeChild(jhonatecFinale);
@@ -343,5 +367,4 @@ window.onload = () => {
     btn.addEventListener('click', playMusic);
   }
   restart();
-  document.getElementById('btn-final').addEventListener('click', addLint);
 };
