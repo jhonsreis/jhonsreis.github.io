@@ -258,6 +258,11 @@ footer {
   /* background-size: inherit; */
 }
 
+.finale-panel{
+  animation: finaleColor 3s alternate infinite;
+  box-shadow: 5px 5px 50px black;
+}
+
 /* ANimations */
 @keyframes toJump {
   0% {
@@ -273,6 +278,26 @@ footer {
   }
 
 }
+
+@keyframes finaleColor {
+  0% {
+    background-color: rgba(35, 121, 92, 0.794);
+  }
+
+  25% {
+    background-color: rgb(12, 122, 177, 0.794);
+  }
+
+  50% {
+    background-color: rgb(184, 23, 205, 0.794);
+  }
+
+  100%{
+    background-color: rgb(254, 151, 77, 0.794);
+  }
+
+}
+
 
 @keyframes finale-walk{
   0%{
