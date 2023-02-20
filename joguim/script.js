@@ -288,7 +288,7 @@ const addLint = () => {
 const moveLint = () => {
   if (document.querySelectorAll('.obj').length === 0) {
     const linter = document.getElementById('lint-object');
-    let newPos = parseInt(window.getComputedStyle(linter).right) + 10;
+    let newPos = parseInt(window.getComputedStyle(linter).right) + 20;
     linter.style.right = `${newPos}px`;
     // Provocar um gamer over com finale
     if (newPos > window.innerWidth - 400) {
