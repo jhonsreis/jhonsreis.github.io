@@ -14,7 +14,9 @@ const initialHeight = '200px';
 const crouchedHeight = '95px';
 let minTime = 30, maxTime = 80, toMove = 25, targetTime = 0, timeCounter = 0;
 
-const objClasses = ['floor-object', 'mid-float-object', 'floor-object', 'float-object']
+const objClassesCore = ['floor-object', 'mid-float-object', 'floor-object', 'float-object'];
+const objClassesImgSm = ['whatsapp', 'instagram', 'tiktok', 'youtube', 'no-signal'];
+const objClassesImgBg = ['cama', 'storm', 'computer'];
 
 const playPause = () => {
   if (message.style.display !== 'none') {
@@ -35,7 +37,7 @@ const jump = () => {
 }
 
 const crouch = () => {
-  jhonatec.style.backgroundImage = 'url(\'images/down.gif\')';
+  jhonatec.style.backgroundImage = 'url(\'images/crouched.gif\')';
   jhonatec.className = 'crouch';
   jhonatec.style.height = crouchedHeight;
 }
@@ -89,65 +91,8 @@ const gameOver = () => {
   pontos = 0;
   playPause();
   loadBestPontos();
+};
 
-}
-
-// const monitore = () => {
-//   pontos += 1;
-//   spanPontos.innerHTML = pontos;
-
-//   const marginBottomJhonatec = parseInt(window.getComputedStyle(jhonatec).marginBottom);
-
-//   const floorObject = document.querySelector('.floor-object');
-//   const leftFloorObject = parseInt(window.getComputedStyle(floorObject).left);
-
-//   const floatObject = document.querySelector('.float-object');
-//   const leftFloatObject = parseInt(window.getComputedStyle(floatObject).left);
-
-//   const floatObjectSM = document.querySelector('.float-object-sm');
-//   const leftFloatObjectSM = parseInt(window.getComputedStyle(floatObjectSM).left);
-
-//   if (leftFloorObject > 70 && leftFloorObject < 200) {
-//     if (marginBottomJhonatec <= 80) {
-//       gameOver();
-//     }
-//   }
-//   if (leftFloatObject > 0 && leftFloatObject < 200) {
-//     if (jhonatec.className !== 'crouch') {
-//       gameOver();
-//     }
-//   }
-//   if (leftFloatObjectSM > 70 && leftFloatObjectSM < 200) {
-//     if (jhonatec.className !== 'crouch' && marginBottomJhonatec <= 150) {
-//       gameOver();
-//     }
-//   }
-
-// }
-
-// const createObjects = () => {
-//   const object = document.createElement('div');
-//   object.className = 'floor-object obj';
-//   main.appendChild(object);
-//   object.classList.add('move-object');
-
-//   const object2 = document.createElement('div');
-//   object2.className = 'float-object obj';
-//   main.appendChild(object2);
-//   object2.classList.add('move-object');
-//   object2.style.animationDelay = '2.4s';
-
-//   const object3 = document.createElement('div');
-//   object3.className = 'float-object-sm obj';
-//   main.appendChild(object3);
-//   object3.classList.add('move-object');
-//   object3.style.animationDelay = '1s';
-
-//   for (const child of main.children) {
-//     child.style.animationPlayState = 'paused';
-//   }
-
-// }
 // ################################################################################
 // ################################################################################
 // ################################################################################
@@ -156,9 +101,22 @@ const generateRandomNum = (maxValue) => Math.floor(Math.random() * maxValue);
 const generateObjects = () => {
   const object = document.createElement('div');
   object.classList.add('obj');
-  const classToObj = objClasses[generateRandomNum(objClasses.length)];
+  const classToObj = objClassesCore[generateRandomNum(objClassesCore.length)];
   object.classList.add(classToObj);
+
+  // Sortear classe personalizada
+  let personalizada = '';
+  if (classToObj === 'float-object') {
+    personalizada = objClassesImgBg[generateRandomNum(objClassesImgBg.length)];
+  } else {
+    personalizada = objClassesImgSm[generateRandomNum(objClassesImgSm.length)];
+  }
+  object.classList.add(personalizada);
+
   main.appendChild(object);
+
+
+
   if (classToObj === 'float-object') {
     targetTime = maxTime;
   } else {
@@ -248,4 +206,6 @@ window.onload = () => {
   }
   loadBestPontos();
   // createObjects();
+  minTime = 30;
+  maxTime = 80;
 };

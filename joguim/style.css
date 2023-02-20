@@ -141,7 +141,6 @@ footer {
 
 
 .floor-object {
-  background-color: red;
   width: 60px;
   height: 60px;
   position: absolute;
@@ -149,7 +148,6 @@ footer {
 }
 
 .float-object {
-  background-color: yellow;
   width: 130px;
   height: 250px;
   right: 0;
@@ -158,13 +156,50 @@ footer {
 }
 
 .mid-float-object {
-  background-color: pink;
   width: 60px;
   height: 60px;
   position: absolute;
   right: 0;
   margin-bottom: 100px;
 }
+
+/* Classes personalizadas */
+.cama{
+  background-image: url('images/cama.png');
+}
+
+.storm{
+  background-image: url('images/storm.png');
+}
+
+.computer{
+  background-image: url('images/computer.png');
+}
+
+.whatsapp{
+  background-image: url('images/whatsapp.png');
+}
+
+.instagram{
+  background-image: url('images/instagram.png');
+}
+
+.tiktok{
+  background-image: url('images/tiktok.png');
+}
+
+.youtube{
+  background-image: url('images/youtube.png');
+}
+
+.no-signal{
+  background-image: url('images/no-signal.png');
+}
+
+.obj{
+  background-size: contain;
+}
+
 
 /* ANimations */
 @keyframes toJump {
