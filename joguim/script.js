@@ -4,8 +4,11 @@ const message = document.getElementById('mensagem');
 const btnsMusic = document.querySelectorAll('.btn-music');
 const spanPontos = document.getElementById('pontos');
 const music = document.getElementById('music');
-const jumpSound = document.getElementById('jump-sound')
+const jumpSound = document.getElementById('jump-sound');
+const linterSound = document.getElementById('linter-sound');
 const crashSound = document.getElementById('crash-sound');
+const winnerSound = document.getElementById('winner-sound');
+const crouchSound = document.getElementById('crouch-sound');
 const panelGameOver = document.getElementById('game-over');
 
 const backColor0 = 'rgb(83, 162, 204)';
@@ -13,7 +16,7 @@ const backColor1 = 'rgb(149 173 170)';
 const backColor2 = 'rgb(210 179 136)';
 const backColor3 = 'rgb(160 88 50)';
 
-let monitoreId, aceleraId, lintID;
+let monitoreId, aceleraId, lintID, autoID;
 let pontos = 0;
 const initialHeight = '200px';
 const crouchedHeight = '95px';
@@ -35,6 +38,9 @@ const playPause = () => {
     message.style.display = 'none';
     monitoreId = setInterval(moveObjects, 60);
     aceleraId = setInterval(acelera, 8000);
+    if(btnsMusic[0].classList.contains('button-visited')){
+      music.play();
+    }
   } else {
     message.style.display = 'flex';
     clearInterval(monitoreId);
@@ -53,6 +59,7 @@ const crouch = () => {
   jhonatec.style.backgroundImage = 'url(\'images/crouched.gif\')';
   jhonatec.className = 'crouch';
   jhonatec.style.height = crouchedHeight;
+  crouchSound.play();
 }
 
 const moveJhonatec = (event) => {
@@ -81,11 +88,17 @@ const restoreJhonatec = (event) => {
 const releaseCrouchKey = (event) => {
   if (event.keyCode === 40 || event.keyCode === 83) {
     restoreJhonatec();
+    crouchSound.pause();
   }
 };
 
 const gameOver = () => {
-  crashSound.play();
+  if (classGameOver === 'lint-object') {
+    winnerSound.currentTime = 0;
+    winnerSound.play();
+  } else {
+    crashSound.play();
+  }
   newPontos = Math.floor(pontos / 4);
   if (localStorage.getItem('bestJumpJhonatec') !== null) {
     const bestPontosLS = JSON.parse(localStorage.getItem('bestJumpJhonatec'));
@@ -125,10 +138,8 @@ const gameOver = () => {
     classFinal = 'storm';
   }
 
-  console.log(classGameOver);
-
   if (classGameOver == 'lint-object') {
-    mensagemPersonalizada = 'Se está lutando contra o Lint, está pronto para aula!';
+    mensagemPersonalizada = 'Lutar contra o Lint é JavaScriptation!';
     // Disparar animação final
     jhonatec.style.display = 'none';
     const jhonatecFinale = document.createElement('div');
@@ -143,11 +154,13 @@ const gameOver = () => {
     classFinal = 'nada';
     main.removeChild(document.getElementById('lint-object'));
     panelGameOver.style.height = "400px";
+    panelGameOver.className = 'finale-panel';
   }
   else {
     document.getElementById('game-over-title').innerHTML = 'GAME OVER!!!';
     document.getElementById('game-over-img').style.display = 'inline';
     panelGameOver.style.height = "700px";
+    panelGameOver.className = '';
   }
 
   document.getElementById('game-over-obj').classList.add(classFinal);
@@ -192,14 +205,17 @@ const generateObjects = () => {
 
   if (pontosAtuais > 1000) {
     addLint();
-  } else if (pontosAtuais > 35) {
+  }else if (pontosAtuais > 800) {
+    document.querySelector('body').style.backgroundColor = backColor0;
+    document.querySelector('#background').style.filter = '';
+  }  else if (pontosAtuais > 600) {
     document.querySelector('body').style.backgroundColor = backColor3;
     document.querySelector('#background').style.filter = 'invert(100%)';
-  } else if (pontosAtuais > 25) {
+  } else if (pontosAtuais > 400) {
     document.querySelector('body').style.backgroundColor = backColor2;
     document.querySelector('#background').style.filter = 'sepia(100%)';
   }
-  else if (pontosAtuais > 5) {
+  else if (pontosAtuais > 200) {
     document.querySelector('body').style.backgroundColor = backColor1;
     document.querySelector('#background').style.filter = 'sepia(50%)';
   }
@@ -298,7 +314,7 @@ const addLint = () => {
   // Parar fluxo do jogo
   clearInterval(acelera);
   targetTime = 1000;
-
+  linterSound.play();
   lintID = setInterval(moveLint, 100);
 }
 
@@ -311,6 +327,8 @@ const moveLint = () => {
     if (newPos > window.innerWidth - 400) {
       classGameOver = 'lint-object';
       clearInterval(lintID);
+      linterSound.currentTime = 0;
+      linterSound.pause();
       gameOver();
     }
   }
@@ -339,10 +357,6 @@ function restart() {
   document.querySelector('body').style.backgroundColor = backColor0;
   document.querySelector('#background').style.filter = '';
 
-  if(btnsMusic[0].classList.contains('button-visited')){
-    music.currentTime = 0;
-  }
-
 }
 
 function restartFromLint() {
@@ -357,6 +371,8 @@ function restartFromLint() {
   const computerFinale = document.getElementById('finale-computer');
   if (computerFinale !== null)
     main.removeChild(computerFinale);
+
+
 }
 
 window.onload = () => {
@@ -367,4 +383,5 @@ window.onload = () => {
     btn.addEventListener('click', playMusic);
   }
   restart();
+  
 };

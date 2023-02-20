@@ -12,7 +12,7 @@
 
 <body>
   <!-- Painel inicial -->
-  <section id="mensagem">
+  <section id="mensagem" >
     <img src="images/principal.gif" alt="Jhonatec pulando" id="img-principal">
     <h1>Jump Jhonatec</h1>
     <h3>Ajude o Jhonatec a focar no JavaScriptation!</h3>
@@ -22,7 +22,7 @@
     <button class="btn-music">Música de fundo</button>
   </section>
   <!-- Painel de Game Over -->
-  <section style="display: none;"  id="game-over">
+  <section  style="display: none;" id="game-over">
     <h1 id="game-over-title">Game Over</h1>
     <div id="game-over-obj"></div>
     <img src="images/principal.gif" alt="Jhonatec pulando" id="game-over-img">
@@ -49,10 +49,13 @@
   </footer>
   <!-- Áudios pré-carregados -->
   <aside>
-    <audio id="crash-sound" src="music/crash.mp3">Not Compatible</audio>
+    <audio id="crash-sound" src="music/game-over.mp3">Not Compatible</audio>
     <audio id="music" src="music/JavaScriptation.mp3" loop>Not Compatible</audio>
     <audio id="jump-sound" src="music/jump.mp3">Not Compatible</audio>
-  </aside>
+    <audio id="linter-sound" src="music/linter.mp3" loop>Not Compatible</audio>
+    <audio id="winner-sound" src="music/winner.mp3">Not Compatible</audio>
+    <audio id="crouch-sound" src="music/crouch.mp3" loop>Not Compatible</audio>
+  </aside>  
   <script src="script.js"></script>
 </body>
 
