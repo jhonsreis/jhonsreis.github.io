@@ -126,6 +126,30 @@ footer {
   background-repeat: no-repeat;
 }
 
+#jhonatec-finale {
+  width: 120px;
+  height: 200px;
+  color: white;
+  text-align: center;
+  margin-left: 40px;
+  position: relative;
+  background-image: url('images/finale-cadeira.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: finale-walk 5s infinite alternate;
+}
+
+#finale-computer {
+  width: 100px;
+  height: 250px;
+  position: absolute;
+  background-image: url('images/finale-computer.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  right: -100px;
+  animation: finale-computer-walk 5s infinite alternate;
+}
+
 .jump {
   animation: toJump .6s ease-in;
 }
@@ -133,7 +157,6 @@ footer {
 .crouch {
   height: 90px;
 }
-
 
 .floor-object {
   width: 60px;
@@ -153,7 +176,6 @@ footer {
 #lint-object {
   width: 350px;
   height: 200px;
-  background-color: purple;
   right: 0;
   position: absolute;
   margin-bottom: 30px;
@@ -164,6 +186,7 @@ footer {
   background-size: contain;
   box-shadow: -3px -2px 5px red;
 } 
+
 #lint-object h3 {
   color: white;
   text-shadow: 3px 2px 2px red;
@@ -245,4 +268,22 @@ footer {
     margin-bottom: 250px;
   }
 
+}
+
+@keyframes finale-walk{
+  0%{
+    margin-left: 40px;
+  }
+  100%{
+    margin-left: calc(100% - 200px);
+  }
+}
+
+@keyframes finale-computer-walk {
+  0%{
+    right: -100px;
+  }
+  100%{
+    right: 0px;
+  }
 }

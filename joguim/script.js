@@ -118,6 +118,13 @@ const gameOver = () => {
   } else{
     mensagemPersonalizada = 'Se está lutando contra o Lint, está pronto para aula! Parabéns!';
     // Disparar animação final
+    jhonatec.style.display = 'none';
+    const jhonatecFinale = document.createElement('div');
+    jhonatecFinale.id = 'jhonatec-finale';
+    const computerFinale = document.createElement('div');
+    computerFinale.id = 'finale-computer';
+    main.appendChild(jhonatecFinale);
+    main.appendChild(computerFinale);
   }
 
   document.getElementById('game-over-obj').classList.add(classFinal);
@@ -170,7 +177,7 @@ const generateObjects = () => {
     targetTime = generateRandomNum(maxTime) + generateRandomNum(maxTime - 2);
   }
 
-  if(Math.floor(pontos / 4) > 500){
+  if(Math.floor(pontos / 4) > 10){
     addLint();
   }
 };
@@ -276,7 +283,7 @@ const addLint = () => {
 const moveLint = () => {
   if(document.querySelectorAll('.obj').length === 0){
     const linter = document.getElementById('lint-object');
-    let newPos = parseInt(window.getComputedStyle(linter).right) + 5;
+    let newPos = parseInt(window.getComputedStyle(linter).right) + 10;
     console.log(`${newPos}px`);
     linter.style.right = `${newPos}px`;
     // Provocar um gamer over com finale
