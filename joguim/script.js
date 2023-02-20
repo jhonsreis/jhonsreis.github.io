@@ -21,15 +21,20 @@ const objClassesImgSm = ['whatsapp', 'instagram', 'tiktok', 'youtube', 'no-signa
 const objClassesImgBg = ['cama', 'storm', 'computer'];
 
 const playPause = () => {
-  if (message.style.display !== 'none' || panelGameOver.style.display !== 'none') {
-    message.style.display = 'none';
+  if (panelGameOver.style.display !== 'none') {
+    restartFromLint();
     panelGameOver.style.display = 'none';
+    monitoreId = setInterval(moveObjects, 60);
+    aceleraId = setInterval(acelera, 8000);
+  } else if (message.style.display !== 'none') {
+    message.style.display = 'none';
     monitoreId = setInterval(moveObjects, 60);
     aceleraId = setInterval(acelera, 8000);
   } else {
     message.style.display = 'flex';
     clearInterval(monitoreId);
     clearInterval(aceleraId);
+    clearInterval(lintID);
   }
 };
 
@@ -76,8 +81,6 @@ const releaseCrouchKey = (event) => {
 
 const gameOver = () => {
   crashSound.play();
-  clearInterval(monitoreId);
-  clearInterval(aceleraId);
   newPontos = Math.floor(pontos / 4);
   if (localStorage.getItem('bestJumpJhonatec') !== null) {
     const bestPontosLS = JSON.parse(localStorage.getItem('bestJumpJhonatec'));
@@ -91,32 +94,36 @@ const gameOver = () => {
   // Personalizar mensagem
   let mensagemPersonalizada;
   let classFinal;
-  if(classGameOver.includes('whatsapp')){
+  if (classGameOver.includes('whatsapp')) {
     mensagemPersonalizada = 'Mensagens da cremosinha foram difíceis de ignorar!';
     classFinal = 'whatsapp';
-  } else if(classGameOver.includes('instagram')){
+  } else if (classGameOver.includes('instagram')) {
     mensagemPersonalizada = 'Só meme top kkkkk!';
     classFinal = 'instagram';
-  }else if(classGameOver.includes('tiktok')){
+  } else if (classGameOver.includes('tiktok')) {
     mensagemPersonalizada = 'Gravou dancinha demais por hoje!';
     classFinal = 'tiktok';
-  }else if(classGameOver.includes('youtube')){
+  } else if (classGameOver.includes('youtube')) {
     mensagemPersonalizada = 'Que vídeo foda que o canal lançou!';
     classFinal = 'youtube';
-  }else if(classGameOver.includes('no-signal')){
+  } else if (classGameOver.includes('no-signal')) {
     mensagemPersonalizada = 'Sem rede na cidade!';
     classFinal = 'no-signal';
-  }else if(classGameOver.includes('computer')){
+  } else if (classGameOver.includes('computer')) {
     mensagemPersonalizada = 'Pouca memória RAM para muita aba!';
     classFinal = 'computer';
-  }else if(classGameOver.includes('cama')){
+  } else if (classGameOver.includes('cama')) {
     mensagemPersonalizada = 'Era pra ser só uma sonequinha...';
     classFinal = 'cama';
-  }else if(classGameOver.includes('storm')){
+  } else if (classGameOver.includes('storm')) {
     mensagemPersonalizada = 'OLHA O RAIOOOOO!!!';
     classFinal = 'storm';
-  } else{
-    mensagemPersonalizada = 'Se está lutando contra o Lint, está pronto para aula! Parabéns!';
+  }
+
+  console.log(classGameOver);
+
+  if (classGameOver == 'lint-object') {
+    mensagemPersonalizada = 'Se está lutando contra o Lint, está pronto para aula!';
     // Disparar animação final
     jhonatec.style.display = 'none';
     const jhonatecFinale = document.createElement('div');
@@ -125,6 +132,17 @@ const gameOver = () => {
     computerFinale.id = 'finale-computer';
     main.appendChild(jhonatecFinale);
     main.appendChild(computerFinale);
+    // Personalizar PAnelGameOver
+    document.getElementById('game-over-title').innerHTML = 'PARABÉNS!!!';
+    document.getElementById('game-over-img').style.display = 'none';
+    classFinal = 'nada';
+    main.removeChild(document.getElementById('lint-object'));
+    panelGameOver.style.height = "400px";
+  }
+  else {
+    document.getElementById('game-over-title').innerHTML = 'GAME OVER!!!';
+    document.getElementById('game-over-img').style.display = 'inline';
+    panelGameOver.style.height = "700px";
   }
 
   document.getElementById('game-over-obj').classList.add(classFinal);
@@ -132,19 +150,7 @@ const gameOver = () => {
   document.getElementById('game-over-points').innerHTML = `Você conseguiu ${newPontos} pontos!`;
   panelGameOver.style.display = 'flex';
 
-
-  const objs = document.querySelectorAll('.obj');
-  for (const obj of objs) {
-    main.removeChild(obj);
-  }
-  pontos = 0;
-
-  loadBestPontos();
-
-  minTime = 30;
-  maxTime = 80;
-  toMove = 20;
-  targetTime = 50;
+  restart();
 };
 
 // ################################################################################
@@ -177,7 +183,7 @@ const generateObjects = () => {
     targetTime = generateRandomNum(maxTime) + generateRandomNum(maxTime - 2);
   }
 
-  if(Math.floor(pontos / 4) > 10){
+  if (Math.floor(pontos / 4) > 10) {
     addLint();
   }
 };
@@ -258,7 +264,6 @@ const loadBestPontos = () => {
 };
 
 const acelera = () => {
-  console.log(maxTime, minTime, toMove);
   if (maxTime > 20) {
     maxTime -= 2;
     toMove += 1;
@@ -281,20 +286,53 @@ const addLint = () => {
 }
 
 const moveLint = () => {
-  if(document.querySelectorAll('.obj').length === 0){
+  if (document.querySelectorAll('.obj').length === 0) {
     const linter = document.getElementById('lint-object');
     let newPos = parseInt(window.getComputedStyle(linter).right) + 10;
-    console.log(`${newPos}px`);
     linter.style.right = `${newPos}px`;
     // Provocar um gamer over com finale
-    if(newPos > window.innerWidth - 400){
-      gameOver();
-      clearInterval(lintID);
+    if (newPos > window.innerWidth - 400) {
       classGameOver = 'lint-object';
+      clearInterval(lintID);
+      gameOver();
     }
   }
 }
 
+function restart() {
+  clearInterval(aceleraId);
+  clearInterval(monitoreId);
+  clearInterval(lintID);
+  loadBestPontos();
+  pontos = 0;
+  minTime = 30;
+  maxTime = 80;
+  toMove = 20;
+  targetTime = 50;
+  
+  const objs = document.querySelectorAll('.obj');
+  for (const obj of objs) {
+    main.removeChild(obj);
+  }
+
+  const lintObject = document.getElementById('lint-object');
+  if (lintObject !== null)
+    main.removeChild(lintObject);
+
+}
+
+function restartFromLint(){
+  restart();
+  jhonatec.style.display = 'block';
+  // Remover finales
+  const jhonatecFinale = document.getElementById('jhonatec-finale');
+  if (jhonatecFinale !== null)
+    main.removeChild(jhonatecFinale);
+
+  const computerFinale = document.getElementById('finale-computer');
+  if (computerFinale !== null)
+    main.removeChild(computerFinale);
+}
 
 window.onload = () => {
   document.addEventListener('keydown', moveJhonatec);
@@ -303,10 +341,6 @@ window.onload = () => {
   for (const btn of btnsMusic) {
     btn.addEventListener('click', playMusic);
   }
-  loadBestPontos();
-  minTime = 30;
-  maxTime = 80;
-  toMove = 20;
-  targetTime = 50;
+  restart();
   document.getElementById('btn-final').addEventListener('click', addLint);
 };
