@@ -150,6 +150,31 @@ footer {
   margin-bottom: 130px;
 }
 
+#lint-object {
+  width: 350px;
+  height: 200px;
+  background-color: purple;
+  right: 0;
+  position: absolute;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-image: url('images/lint.jpeg');
+  background-size: contain;
+  box-shadow: -3px -2px 5px red;
+} 
+#lint-object h3 {
+  color: white;
+  text-shadow: 3px 2px 2px red;
+  text-decoration: red underline wavy;
+  font-size: xx-large;
+}
+
+.lint-final{
+  animation: toJump 1s infinite;
+}
+
 .mid-float-object {
   width: 60px;
   height: 60px;
