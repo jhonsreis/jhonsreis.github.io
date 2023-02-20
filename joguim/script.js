@@ -6,27 +6,32 @@ const spanPontos = document.getElementById('pontos');
 const music = document.getElementById('music');
 const jumpSound = document.getElementById('jump-sound')
 const crashSound = document.getElementById('crash-sound');
-const titleGameOver = document.getElementById('game-over');
+const panelGameOver = document.getElementById('game-over');
 
-let monitoreId;
+let monitoreId, aceleraId;
 let pontos = 0;
 const initialHeight = '200px';
 const crouchedHeight = '95px';
-let minTime = 30, maxTime = 80, toMove = 25, targetTime = 0, timeCounter = 0;
+let minTime = 30, maxTime = 80, toMove = 20, targetTime = 80, timeCounter = 0;
+let classGameOver = '';
+
 
 const objClassesCore = ['floor-object', 'mid-float-object', 'floor-object', 'float-object'];
 const objClassesImgSm = ['whatsapp', 'instagram', 'tiktok', 'youtube', 'no-signal'];
 const objClassesImgBg = ['cama', 'storm', 'computer'];
 
 const playPause = () => {
-  if (message.style.display !== 'none') {
+  if (message.style.display !== 'none' || panelGameOver.style.display !== 'none') {
     message.style.display = 'none';
-    titleGameOver.style.display = 'none';
-    generateObjects();
-    monitoreId = setInterval(moveObjects, 50);
+    panelGameOver.style.display = 'none';
+    // if (document.querySelectorAll('.obj').length === 0)
+    //   generateObjects();
+    monitoreId = setInterval(moveObjects, 60);
+    aceleraId = setInterval(acelera, 8000);
   } else {
     message.style.display = 'flex';
     clearInterval(monitoreId);
+    clearInterval(aceleraId);
   }
 };
 
@@ -73,6 +78,8 @@ const releaseCrouchKey = (event) => {
 
 const gameOver = () => {
   crashSound.play();
+  clearInterval(monitoreId);
+  clearInterval(aceleraId);
   newPontos = Math.floor(pontos / 4);
   if (localStorage.getItem('bestJumpJhonatec') !== null) {
     const bestPontosLS = JSON.parse(localStorage.getItem('bestJumpJhonatec'));
@@ -83,14 +90,52 @@ const gameOver = () => {
     localStorage.setItem('bestJumpJhonatec', JSON.stringify(newPontos));
   }
 
-  titleGameOver.style.display = 'block';
+  // Personalizar mensagem
+  let mensagemPersonalizada;
+  let classFinal;
+  if(classGameOver.includes('whatsapp')){
+    mensagemPersonalizada = 'Mensagens da cremosinha foram difíceis de ignorar!';
+    classFinal = 'whatsapp';
+  } else if(classGameOver.includes('instagram')){
+    mensagemPersonalizada = 'Só meme top kkkkk!';
+    classFinal = 'instagram';
+  }else if(classGameOver.includes('tiktok')){
+    mensagemPersonalizada = 'Gravou dancinha demais por hoje!';
+    classFinal = 'tiktok';
+  }else if(classGameOver.includes('youtube')){
+    mensagemPersonalizada = 'Que vídeo foda que o canal lançou!';
+    classFinal = 'youtube';
+  }else if(classGameOver.includes('no-signal')){
+    mensagemPersonalizada = 'Sem rede na cidade!';
+    classFinal = 'no-signal';
+  }else if(classGameOver.includes('computer')){
+    mensagemPersonalizada = 'Pouca memória RAM para muita aba!';
+    classFinal = 'computer';
+  }else if(classGameOver.includes('cama')){
+    mensagemPersonalizada = 'Era pra ser só uma sonequinha...';
+    classFinal = 'cama';
+  }else if(classGameOver.includes('storm')){
+    mensagemPersonalizada = 'OLHA O RAIOOOOO!!!';
+    classFinal = 'storm';
+  }
+
+  document.getElementById('game-over-obj').classList.add(classFinal);
+  document.getElementById('game-over-msg').innerHTML = mensagemPersonalizada;
+  document.getElementById('game-over-points').innerHTML = `Você conseguiu ${newPontos} pontos!`;
+  panelGameOver.style.display = 'flex';
+
+
   const objs = document.querySelectorAll('.obj');
   for (const obj of objs) {
     main.removeChild(obj);
   }
   pontos = 0;
-  playPause();
+
   loadBestPontos();
+
+  minTime = 30;
+  maxTime = 80;
+  toMove = 20;
 };
 
 // ################################################################################
@@ -118,9 +163,9 @@ const generateObjects = () => {
 
 
   if (classToObj === 'float-object') {
-    targetTime = maxTime;
+    targetTime = maxTime + 2;
   } else {
-    targetTime = generateRandomNum(maxTime) + minTime * 2;
+    targetTime = generateRandomNum(maxTime) + generateRandomNum(maxTime - 2);
   }
 };
 
@@ -140,18 +185,21 @@ const moveObjects = () => {
       if (obj.classList.contains('floor-object')) {
         if (newPosition > (window.innerWidth - 100) && newPosition < (window.innerWidth - 20)) {
           if (marginBottomJhonatec <= 60) {
+            classGameOver = obj.className;
             gameOver();
           }
         }
       } else if (obj.classList.contains('float-object')) {
         if (newPosition >= (window.innerWidth - 170) && newPosition < (window.innerWidth - 20)) {
           if (jhonatec.className !== 'crouch') {
+            classGameOver = obj.className;
             gameOver();
           }
         }
       } else if (obj.classList.contains('mid-float-object')) {
         if (newPosition >= (window.innerWidth - 100) && newPosition < (window.innerWidth - 20)) {
           if (jhonatec.className !== 'crouch' && marginBottomJhonatec <= 60) {
+            classGameOver = obj.className;
             gameOver();
           }
         }
@@ -195,6 +243,13 @@ const loadBestPontos = () => {
   }
 };
 
+const acelera = () => {
+  console.log(maxTime, minTime, toMove);
+  if (maxTime > 20) {
+    maxTime -= 2;
+    toMove += 1;
+  }
+};
 
 
 window.onload = () => {
@@ -208,4 +263,5 @@ window.onload = () => {
   // createObjects();
   minTime = 30;
   maxTime = 80;
+  toMove = 20;
 };
