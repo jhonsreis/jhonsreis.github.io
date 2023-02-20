@@ -8,11 +8,11 @@ const jumpSound = document.getElementById('jump-sound')
 const crashSound = document.getElementById('crash-sound');
 const titleGameOver = document.getElementById('game-over');
 
-let monitoreId;
+let monitoreId, aceleraId;
 let pontos = 0;
 const initialHeight = '200px';
 const crouchedHeight = '95px';
-let minTime = 30, maxTime = 80, toMove = 25, targetTime = 0, timeCounter = 0;
+let minTime = 30, maxTime = 80, toMove = 20, targetTime = 0, timeCounter = 0;
 
 const objClassesCore = ['floor-object', 'mid-float-object', 'floor-object', 'float-object'];
 const objClassesImgSm = ['whatsapp', 'instagram', 'tiktok', 'youtube', 'no-signal'];
@@ -23,10 +23,12 @@ const playPause = () => {
     message.style.display = 'none';
     titleGameOver.style.display = 'none';
     generateObjects();
-    monitoreId = setInterval(moveObjects, 50);
+    monitoreId = setInterval(moveObjects, 60);
+    aceleraId = setInterval(acelera, 4000);
   } else {
     message.style.display = 'flex';
     clearInterval(monitoreId);
+    clearInterval(aceleraId);
   }
 };
 
@@ -91,6 +93,9 @@ const gameOver = () => {
   pontos = 0;
   playPause();
   loadBestPontos();
+  minTime = 30;
+  maxTime = 80;
+  toMove = 20;
 };
 
 // ################################################################################
@@ -120,7 +125,7 @@ const generateObjects = () => {
   if (classToObj === 'float-object') {
     targetTime = maxTime;
   } else {
-    targetTime = generateRandomNum(maxTime) + minTime * 2;
+    targetTime = generateRandomNum(maxTime) + 10;
   }
 };
 
@@ -195,6 +200,15 @@ const loadBestPontos = () => {
   }
 };
 
+const acelera = () => {
+
+  if (maxTime > 20) {
+    maxTime -= 3;
+    toMove += 1;
+  } else{
+    console.log(maxTime);
+  }
+};
 
 
 window.onload = () => {
@@ -208,4 +222,5 @@ window.onload = () => {
   // createObjects();
   minTime = 30;
   maxTime = 80;
+  toMove = 20;
 };
