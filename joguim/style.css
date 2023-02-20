@@ -11,7 +11,7 @@ body {
   font-family: Tourney, monospace;
 }
 
-#mensagem {
+#mensagem, #game-over {
   background-color: rgb(25, 25, 25, .85);
   border-radius: 10px;
   padding: 30px;
@@ -32,18 +32,15 @@ body {
   font-weight: 400;
 }
 
-#mensagem h1, #mensagem h3 {
+h1, h3 {
   font-weight: 400;
 }
 
-#mensagem p {
+p {
   font-weight: 900;
   font-size: 24px;
 }
 
-#game-over{
-  display: none;
-}
 
 #pontuacao{
   position: absolute;
@@ -115,8 +112,6 @@ footer {
   justify-content: space-between;
   padding: 0 20px;
   height: 100px;
-  font-weight: 900;
-  font-size: large;
 }
 
 #jhonatec {
@@ -200,6 +195,16 @@ footer {
   background-size: contain;
 }
 
+/* Game Over */
+#game-over-obj{
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 200px;
+  z-index: -1;
+  background-repeat: round;
+  /* background-size: inherit; */
+}
 
 /* ANimations */
 @keyframes toJump {
