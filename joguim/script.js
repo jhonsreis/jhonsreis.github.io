@@ -183,7 +183,7 @@ const generateObjects = () => {
     targetTime = generateRandomNum(maxTime) + generateRandomNum(maxTime - 2);
   }
 
-  if (Math.floor(pontos / 4) > 10) {
+  if (Math.floor(pontos / 4) > 1000) {
     addLint();
   }
 };
@@ -324,7 +324,8 @@ function restart() {
 function restartFromLint(){
   restart();
   jhonatec.style.display = 'block';
-  // Remover finales
+  document.getElementById('game-over-obj').className = '';
+    // Remover finales
   const jhonatecFinale = document.getElementById('jhonatec-finale');
   if (jhonatecFinale !== null)
     main.removeChild(jhonatecFinale);
