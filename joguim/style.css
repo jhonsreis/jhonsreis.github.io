@@ -18,9 +18,9 @@ body {
   padding: 30px;
   color: white;
   width: 500px;
-  height: 75%;
+  height: 600px;
   position: absolute;
-  left: 35%;
+  left: calc(50% - 250px);
   top: 5%;
   z-index: 1;
   display: flex;
@@ -39,7 +39,7 @@ h1, h3 {
 
 p {
   font-weight: 900;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 
