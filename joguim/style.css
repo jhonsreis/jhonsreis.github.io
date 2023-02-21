@@ -373,7 +373,7 @@ footer {
     margin-left: 40px;
   }
   100%{
-    margin-left: calc(100% - 200px);
+    margin-left: calc(100% - 350px);
   }
 }
 
@@ -382,7 +382,7 @@ footer {
     right: -100px;
   }
   100%{
-    right: 0px;
+    right: 120px;
   }
 }
 
