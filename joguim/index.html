@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=500, initial-scale=0.6 user-scalable=no">
+  <!-- <meta name="viewport" content="height=400, initial-scale=0.35 user-scalable=no"> -->
   <title>JavaScriptation</title>
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
@@ -12,24 +14,34 @@
 
 <body>
   <!-- Painel inicial -->
+  
   <section id="mensagem" >
-    <img src="images/principal.gif" alt="Jhonatec pulando" id="img-principal">
-    <h1>Jump Jhonatec</h1>
-    <h3>Ajude o Jhonatec a focar no JavaScriptation!</h3>
-    <p>Para pular, use [&UpArrow;] ou [W]</p>
-    <p>Para abaixar, use [&DownArrow;] ou [S]</p>
-    <p>Play ou Pause, use [P]</p>
-    <button class="btn-music">Música de fundo</button>
+    <section>
+      <img src="images/principal.gif" alt="Jhonatec pulando" id="img-principal">
+    </section>
+    <section>
+      <h1>Jump Jhonatec</h1>
+      <h3>Ajude o Jhonatec a focar no JavaScriptation!</h3>
+      <p>Para pular, use [&UpArrow;] ou [W]</p>
+      <p>Para abaixar, use [&DownArrow;] ou [S]</p>
+      <p>Play ou Pause, use [P]</p>
+      <button class="btn-music"></button>
+    </section>
   </section>
+
   <!-- Painel de Game Over -->
-  <section  style="display: none;" id="game-over">
-    <h1 id="game-over-title">Game Over</h1>
-    <div id="game-over-obj"></div>
-    <img src="images/principal.gif" alt="Jhonatec pulando" id="game-over-img">
-    <p id="game-over-msg">Mensagem de fim de jogo!</p>
-    <p id="game-over-points">Você conseguiu x pontos</p>
-    <p>Para tentar de novo, pressione [P]</p>
-    <button class="btn-music">Música de fundo</button>
+  <section id="game-over" style="display: none;">
+    <section>
+      <div id="game-over-obj"></div>
+      <img src="images/principal.gif" alt="Jhonatec pulando" id="game-over-img">
+    </section>
+    <section>
+      <h1 id="game-over-title">Game Over</h1>
+      <p id="game-over-msg">Mensagem de fim de jogo!</p>
+      <p id="game-over-points">Você conseguiu x pontos</p>
+      <p>Para tentar de novo, pressione [P]</p>
+      <button class="btn-music"></button>
+    </section>
   </section>
   <!-- Painel de Pontos -->
   <section id="pontuacao">
@@ -40,13 +52,21 @@
   <main>
     <section id="background"></section>
     <div id="jhonatec" class="normal"></div>
-    
   </main>
+
   <!-- Rodapé -->
   <footer>
+  <section id="info">
+    <button class="btn-music"></button>
     <p>Criado por Jhonatec em fevereiro de 2023.</p>
-    <button class="btn-music">Música de fundo</button>
-  </footer>
+  </section>
+
+  <section id="btns-cel">
+    <button id="btn-jump"></button>
+    <button id="btn-crouch"></button>
+    <button id="btn-play"></button>
+  </section>
+</footer>
   <!-- Áudios pré-carregados -->
   <aside>
     <audio id="crash-sound" src="music/game-over.mp3">Not Compatible</audio>

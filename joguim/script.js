@@ -38,7 +38,7 @@ const playPause = () => {
     message.style.display = 'none';
     monitoreId = setInterval(moveObjects, 60);
     aceleraId = setInterval(acelera, 8000);
-    if(btnsMusic[0].classList.contains('button-visited')){
+    if (btnsMusic[0].classList.contains('button-visited')) {
       music.play();
     }
   } else {
@@ -60,7 +60,30 @@ const crouch = () => {
   jhonatec.className = 'crouch';
   jhonatec.style.height = crouchedHeight;
   crouchSound.play();
-}
+};
+
+const jumpMobile = () => {
+  if (jhonatec.className == 'crouch') {
+    restoreJhonatec();
+  } else {
+
+    jumpSound.play();
+    jhonatec.className = 'jump';
+    jhonatec.style.backgroundImage = 'url(\'images/jump.gif\')';
+  }
+
+};
+
+const crouchMobile = () => {
+  if (jhonatec.className == 'crouch') {
+    restoreJhonatec();
+  } else {
+    jhonatec.style.backgroundImage = 'url(\'images/crouched.gif\')';
+    jhonatec.className = 'crouch';
+    jhonatec.style.height = crouchedHeight;
+    crouchSound.play();
+  }
+};
 
 const moveJhonatec = (event) => {
   switch (event.keyCode) {
@@ -83,12 +106,12 @@ const restoreJhonatec = (event) => {
   jhonatec.className = '';
   jhonatec.style.height = initialHeight;
   jhonatec.style.backgroundImage = 'url(\'images/caminhando.gif\')';
+  crouchSound.pause();
 }
 
 const releaseCrouchKey = (event) => {
   if (event.keyCode === 40 || event.keyCode === 83) {
     restoreJhonatec();
-    crouchSound.pause();
   }
 };
 
@@ -122,7 +145,7 @@ const gameOver = () => {
     mensagemPersonalizada = 'Gravou dancinha demais por hoje!';
     classFinal = 'tiktok';
   } else if (classGameOver.includes('youtube')) {
-    mensagemPersonalizada = 'Que vídeo foda que o canal lançou!';
+    mensagemPersonalizada = 'Tem muito vídeo novo massaaaa!';
     classFinal = 'youtube';
   } else if (classGameOver.includes('no-signal')) {
     mensagemPersonalizada = 'Sem rede na cidade!';
@@ -153,13 +176,11 @@ const gameOver = () => {
     document.getElementById('game-over-img').style.display = 'none';
     classFinal = 'nada';
     main.removeChild(document.getElementById('lint-object'));
-    panelGameOver.style.height = "400px";
     panelGameOver.className = 'finale-panel';
   }
   else {
     document.getElementById('game-over-title').innerHTML = 'GAME OVER!!!';
     document.getElementById('game-over-img').style.display = 'inline';
-    panelGameOver.style.height = "700px";
     panelGameOver.className = '';
   }
 
@@ -205,10 +226,10 @@ const generateObjects = () => {
 
   if (pontosAtuais > 1000) {
     addLint();
-  }else if (pontosAtuais > 800) {
+  } else if (pontosAtuais > 800) {
     document.querySelector('body').style.backgroundColor = backColor0;
     document.querySelector('#background').style.filter = '';
-  }  else if (pontosAtuais > 600) {
+  } else if (pontosAtuais > 600) {
     document.querySelector('body').style.backgroundColor = backColor3;
     document.querySelector('#background').style.filter = 'invert(100%)';
   } else if (pontosAtuais > 400) {
@@ -379,9 +400,12 @@ window.onload = () => {
   document.addEventListener('keydown', moveJhonatec);
   document.addEventListener('keyup', releaseCrouchKey);
   jhonatec.addEventListener('animationend', restoreJhonatec);
+  document.getElementById('btn-jump').addEventListener('click', jumpMobile);
+  document.getElementById('btn-crouch').addEventListener('mousedown', crouchMobile);
+  document.getElementById('btn-play').addEventListener('click', playPause);
   for (const btn of btnsMusic) {
     btn.addEventListener('click', playMusic);
   }
   restart();
-  
+
 };

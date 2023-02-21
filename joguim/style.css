@@ -12,25 +12,78 @@ body {
   overflow: hidden;
 }
 
+#btns-cel{
+  background-color: rgb(25, 25, 25);
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  border-radius: 10px;
+  padding: 15px;
+  position: absolute;
+  right: 0px;
+  bottom: 30px;
+  opacity: .8;
+}
+
+#btns-cel button{
+  border-radius: 5%;
+  height: 60px;
+  width: 60px;
+  background-color: aquamarine;
+  outline: 5px solid aquamarine;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+#btns-cel button:active{
+  background-color: rgb(7, 149, 33);
+  outline: 5px solid rgb(7, 149, 33);
+}
+
+#btn-jump{
+  background-image: url('images/up-arrow.png');
+}
+
+#btn-crouch{
+  background-image: url('images/down-arrow.png');
+}
+
+#btn-play{
+  background-image: url('images/play.png');
+}
+
 #mensagem, #game-over {
   background-color: rgb(25, 25, 25, .85);
   border-radius: 10px;
   padding: 30px;
   color: white;
-  width: 500px;
-  height: 600px;
+  width: 450px;
+  height: fit-content;
   position: absolute;
-  left: calc(50% - 250px);
-  top: 5%;
+  left: calc(50% - 220px);
+  top: 130px;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
   font-size: 24px;
   text-align: center;
   font-weight: 400;
+}
+
+#game-over-img{
+  max-width: 130px;
+}
+
+#mensagem section, #game-over section{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
 }
 
 h1, h3 {
@@ -58,23 +111,29 @@ p {
 
 .btn-music{
   background-color: aquamarine;
-  padding: 10px;
+  outline: 5px solid aquamarine;
   border-radius: 8px;
   border: 0;
   cursor: pointer;
-  font-size: 18px;
+  width: 50px;
+  height: 50px;
+  background-image: url('images/musical-note.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .btn-music:active{
   background-color: rgb(50, 171, 131);
+  outline: 5px solid rgb(50, 171, 131);
 }
 
 
 .button-visited{
-  background-color: rgb(27, 104, 78) !important;
-  border: 2px solid white !important;
+  background-color: rgb(10, 139, 231) !important;
+  outline: 5px solid rgb(10, 139, 231)!important;
   color: white !important;
-  box-shadow: 2px 2px 10px white;
+  box-shadow: 0px 0px 20px white;
 }
 
 #background{
@@ -101,11 +160,21 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 150px 0 10px;
   height: 100px;
   position: absolute;
   width: 100%;
   bottom: 0;
+}
+
+#info{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+#info p{
+  word-wrap: break-word;
 }
 
 #jhonatec {
@@ -315,4 +384,53 @@ footer {
   100%{
     right: 0px;
   }
+}
+
+/* MEdia query */
+@media only screen and (orientation: landscape) and (max-height: 700px) {
+  #mensagem, #game-over{
+    top: 20px;
+    /* font-size: small; */
+    flex-direction: row;
+    width: 650px;
+    left: calc(50% - 325px);
+  }
+
+  #game-over-obj{
+    width: 200px;
+    height: 170px;
+  }
+
+  #game-over-img{
+    width: 100px;
+  }
+
+  p{
+    font-size: small;
+  }
+
+  footer{
+    height: 70px;
+  }
+
+  main, #background{
+    bottom: 70px;
+  }
+
+  #jhonatec{
+    bottom: 110px;
+  }
+
+  .floor-object{
+    bottom: 110px;
+  }
+
+  .float-object{
+    bottom: 110px;
+  }
+
+  .mid-float-object{
+    bottom: 110x;
+  }
+
 }
