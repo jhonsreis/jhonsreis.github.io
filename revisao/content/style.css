@@ -1,0 +1,45 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main{
+  display: flex;
+  padding: 20px;
+}
+
+section{
+padding: 20px;
+}
+
+#conteudo{
+  background-color: rgb(255, 255, 136);
+  width: 100%;
+}
+
+#renderizado{
+  background-color: rgb(108, 163, 240);
+  width: 100%;
+}
+
+textarea{
+  display: block;
+  width: 500px;
+  height: 750px;
+  padding: 15px;
+  font-size: large;
+}
+
+button{
+  padding: 5px;
+  font-size: larger;
+  margin: 10px 0;
+}
+
+iframe{
+  background-color: aliceblue;
+  width: 550px;
+  height: 95%;
+  border-radius: 10px;
+}
