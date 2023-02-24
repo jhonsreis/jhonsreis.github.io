@@ -38,10 +38,10 @@ nav a:hover{
 #search-div{
   background-color: rgb(38, 41, 49);
   margin: 10px;
-  border-radius: 10px;
-  padding: 5px;
+  border-radius: 6px;
+  padding: 8px;
   display: flex;
-  gap: 5px;
+  gap: 10px;
   width: calc(100vw - 250px);
 }
 
@@ -54,6 +54,19 @@ nav a:hover{
   font-size: large;
 }
 
-/* #serach-div input:focus{
-  background-color: red;
-} */
+#conteudo{
+  width: calc(100%);
+  height: calc(100vh - 80px);
+}
+
+#diy{
+  background-color: rgb(31, 32, 39);
+  border-radius: 8px;
+}
+
+textarea{
+  background-color:rgb(16, 16, 17);
+  margin: 10px 0;
+  border-radius: 8px;
+  color: beige;
+}
