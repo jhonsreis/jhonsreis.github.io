@@ -3,46 +3,54 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body{
   background-color: rgb(19, 20, 23);
+  font-family: 'Golos Text', sans-serif;
+  overflow: hidden;
 }
-
 main{
   display: flex;
-  height: 100vh;
-  width: 100vw;
 }
 
 nav{
   display: flex;
   background-color: rgb(31, 32, 39);
   flex-direction: column;
-  gap: 20px;
   flex-basis: 200px;
   color: rgb(242, 242, 242);
   text-align: center;
-  padding-top: 30px;
+  padding-top: 20px;
+  align-items: center;
+}
+nav .logo{
+  width: 150px;
+  height: 75px;
+  background-color: red;
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
 nav a{
   text-decoration: none;
   color: rgb(242, 242, 242);
   padding: 10px;
+  width: 100%;
 }
 
 nav a:hover{
   background-color: rgba(20, 20, 21, 0.784);
+  transition: 300ms
 }
 
 #search-div{
   background-color: rgb(38, 41, 49);
-  margin: 10px;
+  margin: 20px 15px 0;
   border-radius: 6px;
   padding: 8px;
   display: flex;
   gap: 10px;
-  width: calc(100vw - 250px);
 }
 
 #search-div input{
@@ -54,9 +62,13 @@ nav a:hover{
   font-size: large;
 }
 
+#mainContent{
+  width: 100vw;
+}
+
 #conteudo{
   width: calc(100%);
-  height: calc(100vh - 80px);
+  height: calc(100vh - 45px);
 }
 
 #diy{
