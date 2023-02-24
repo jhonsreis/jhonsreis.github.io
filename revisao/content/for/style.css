@@ -26,14 +26,16 @@ main{
   flex-wrap: wrap;
   padding: 15px;
   gap: 10px 0;
+  justify-content: space-between;
 }
 
 section{
-padding: 20px;
+padding: 10px;
 }
 
 #diy{
   width: 100%;
+  height: 100%;
   display: flex;
 }
 
@@ -43,7 +45,6 @@ padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: darkslategrey;
 }
 .header-img{
   width: 200px;
@@ -62,12 +63,15 @@ padding: 20px;
   flex-basis: 50%;
 }
 
-textarea{
+#textarea{
   display: block;
   height: 550px;
   padding: 15px;
   width: 100%;
   font-size: large;
+  resize: none;
+  border-radius: 10px;
+  background-color: white;
 }
 
 button{
@@ -76,30 +80,26 @@ button{
   margin: 10px 0;
 }
 
-iframe{
-  background-color: aliceblue;
+#iframe-resultado{
+  background-color: white;
   width: 100%;
-  height: 95%;
+  height: 80%;
   border-radius: 10px;
 }
 
-#video-content{
-  width: 55%;
-  height: calc(80vh - 100px);
-  background-color: aquamarine;
+#video-content, #explanation{
+  width: 49%;
+  padding:0px
 }
 
-#explanation{
-  width: 45%;
-  background-color: rgb(182, 132, 67);
-}
 #explanation-resume{
   width: 100%;
-  background-color: rgb(99, 146, 52);
+  margin-top:15px;
+  background-color: rgb(31, 32, 39);
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
 #exercise{
   width: 100%;
-  background-color: #1d4242;
 }
 /* inicio personalização Scroll */
 ::-webkit-scrollbar {
@@ -123,56 +123,51 @@ iframe{
 }
 /* fim personalização Scroll */
 
+#conteudo label, #renderizado h3{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom:10px;
+  display: block;
+
+}
 /* CSS */
-.button-84 {
-  align-items: center;
-  background-color: initial;
-  background-image: linear-gradient(#464d55, #25292e);
-  border-radius: 8px;
-  border-width: 0;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, .1),0 3px 6px rgba(0, 0, 0, .05);
+.button-40 {
+  background-color: #112858;
+  border: 1px solid transparent;
+  border-radius: .75rem;
   box-sizing: border-box;
-  color: #fff;
+  color: #FFFFFF;
   cursor: pointer;
-  display: inline-flex;
-  flex-direction: column;
-  font-family: expo-brand-demi,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  font-size: 18px;
-  height: 52px;
-  justify-content: center;
-  line-height: 1;
-  margin: 0;
-  outline: none;
-  overflow: hidden;
-  padding: 0 32px;
+  flex: 0 0 auto;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  padding: .75rem 1.2rem;
   text-align: center;
-  text-decoration: none;
-  transform: translate3d(0, 0, 0);
-  transition: all 150ms;
-  vertical-align: baseline;
-  white-space: nowrap;
+  text-decoration: none #6B7280 solid;
+  text-decoration-thickness: auto;
+  transition-duration: .2s;
+  transition-property: background-color,border-color,color,fill,stroke;
+  transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   width: 100%;
-  margin-top: 10px;
 }
 
-.button-84:hover {
-  box-shadow: rgba(0, 1, 0, .2) 0 2px 8px;
-  opacity: .85;
+.button-40:hover {
+  background-color: #374151;
 }
 
-.button-84:active {
-  outline: 0;
+.button-40:focus {
+  box-shadow: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
-.button-84:focus {
-  box-shadow: rgba(0, 0, 0, .5) 0 0 0 3px;
-}
-
-@media (max-width: 420px) {
-  .button-84 {
-    height: 48px;
+@media (min-width: 768px) {
+  .button-40 {
+    padding: .75rem 1.5rem;
   }
 }
