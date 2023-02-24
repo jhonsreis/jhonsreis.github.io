@@ -25,11 +25,12 @@ nav{
 nav .logo{
   width: 150px;
   height: 75px;
-  background-color: red;
+  /* background-color: red; */
   display: flex;
   margin-bottom: 20px;
   align-items: center;
   justify-content: center;
+  filter: brightness(300%);
 }
 
 nav a{

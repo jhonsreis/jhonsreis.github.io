@@ -12,6 +12,7 @@
     href="https://fonts.googleapis.com/css2?family=Alata&family=Golos+Text:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/monaco-editor/min/vs/loader.js"></script>
 </head>
 
 <body>
@@ -44,12 +45,12 @@
       <p>Crie uma função chamada forAninhado() que receberá como parâmetro um vetor. Este vetor deve ter sub-vetores, com valores que variam entre ímpar e par. Com o laço de repetição FOR que irá percorrer este vetor com seus sub-vetores e irá buscar os valores pares. Os valores pares devem ser adicionados em um novo vetor, e você deverá retornar este novo vetor.</p>
       <sectio id="diy">
         <section id="conteudo">
-          <label for="textarea">Digite o comando HTML aqui embaixo:</label>
-          <textarea name="" id="textarea" maxlength="5000"></textarea>
+          <label for="textarea">Digite o comando FOR aqui:</label>
+          <div id="editor"></div>
           <button id="btn-renderizar" class="button-40">Executar</button>
         </section>
         <section id="renderizado">
-          <h3>Veja o resultado aqui embaixo:</h3>
+          <h3>Veja o resultado aqui:</h3>
           <iframe id="iframe-resultado" frameborder="0" srcdoc=""></iframe>
         </section>
     </section>

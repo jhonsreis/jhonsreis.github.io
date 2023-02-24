@@ -63,15 +63,10 @@ padding: 10px;
   flex-basis: 50%;
 }
 
-#textarea{
-  display: block;
-  height: 550px;
-  padding: 15px;
+#editor{
+  height: 500px;
   width: 100%;
-  font-size: large;
-  resize: none;
-  border-radius: 10px;
-  background-color: white;
+  text-align: left;
 }
 
 button{
@@ -84,7 +79,6 @@ button{
   background-color: white;
   width: 100%;
   height: 80%;
-  border-radius: 10px;
 }
 
 #video-content, #explanation{
