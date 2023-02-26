@@ -39,9 +39,16 @@ function renderizar(){
   ){
     document.getElementById('img-resultado').src = 'naruto-comendo.gif';
     document.querySelector('#mensagem-resultado').innerHTML = 'Pronto o miojim! Ficou feliz o Narutim! 🥰';
+    document.querySelector('#sound-game-over').pause();
+    document.querySelector('#sound-game-over').currentTime = 0;
+    document.querySelector('#sound-winner').play();
+
   } else {
     document.getElementById('img-resultado').src = 'erro.gif';
     document.querySelector('#mensagem-resultado').innerHTML = 'Melhor tentar de novo! 😅';
+    document.querySelector('#sound-winner').pause();
+    document.querySelector('#sound-winner').currentTime = 0;
+    document.querySelector('#sound-game-over').play();
   }
 
 
