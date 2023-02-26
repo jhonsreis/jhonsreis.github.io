@@ -9,34 +9,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alata&family=Golos+Text:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/main-style.css">
 </head>
 
 <body>
   <main>
-    <nav>
-      <div class="logo">
-        <img src="images/logo.png" alt="" srcset="">
-      </div>
-      <a href="#">Introdução</a>
-      <a href="">HTML</a>
-      <a href="">CSS</a>
-      <a href="">JavaScript</a>
-      <a href="">Colaboradores</a>
-      <a href="">Projetos feitos com DOM</a>
-    </nav>
-    <!-- PRincipal -->
+    <iframe src="./menus/nav-bar.html" frameborder="0" id="iframe-nav-bar"></iframe>
+    <!-- PRincipal -->  
     <section id="mainContent">
       <!-- Pesquisa e botões superiores -->
-      <section id="search">
-        <div id="search-div">
-          <img src="images/magnifying-glass.png" alt="" height="24px">
-          <input type="text" placeholder="O que você quer revisar? - { Fase de desenvolvimento } ">
-        </div>
-      </section>
+      <iframe src="./menus/search-bar.html" frameborder="0" id="iframe-search"></iframe>
       <!-- Conteúdo a ser recarregado dinamicamente -->
       <section id="dinamic-content">
-        <iframe id="conteudo" src="content/algoritmos/index.html" frameborder="0"></iframe>
+        <!-- <iframe id="conteudo" src="content/algoritmos/index.html" frameborder="0"></iframe> -->
       </section>
     </section>
   </main>
