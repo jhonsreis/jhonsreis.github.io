@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste de revisão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alata&family=Golos+Text:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/monaco-editor/min/vs/loader.js"></script>
+</head>
+
+<body>
+
+  <main>
+    <section id="header-content">
+      <h1>JavaScript - Algoritmos</h1>
+      <div class="header-img"><img src="../../images/js.svg" alt="laço forEach" width="50px"></div>
+    </section>
+    <hr>
+    <section id="video-content">
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/L4Qjlp8UDlM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </section>
+    <section id="explanation">
+      <h2>Sobre Algoritmos</h2>
+      <p><em>Para resolver um problemão, a gente divide ele em vários probleminhas!</em> 😉</p>
+      <p></p>
+      <img src="algoritmos.jpeg" alt="exemplo FOR" width="100%">
+    </section>
+    <section id="explanation-resume">
+      <p>O grande objetivo da programação é <strong>solucionar problemas!</strong></p>
+      <p>Quando conseguimos separar as etapas, percebemos que algumas delas só podem ser executadas quando outras terminarem.</p>
+      <p>Por isso, antes de encarar qualquer desafio, anote todas as etapas que você analisou serem necessárias.</p>
+      <p>Se depois perceber que faltou algumas, volte e ajuste seu algoritmo para continuar conquistando!</p>
+    </section>
+    <section id="exercise">
+      <h2>Que tal praticar?</h2>
+      <p>Preparamos uma receita maravilhosa: <strong>Miojo Supremo 🤣</strong></p>
+      <p>Mas os passos estão desorganizados! 😭</p>
+      <p>Cabe a você, <strong>nossa esperança algorítmica</strong> informar os passos certos para que nosso cozinheiro meia boca possa se tornar um Chef Lamén Instantâneo!</p>
+      <p>Quando acabar de preencher, clique no botão <strong>Executar</strong> para ver o resultado ao lado.</p>
+      <p>Contamos com você!!!</p>
+      <sectio id="diy">
+        <section id="conteudo">
+          <h3>Como preparar um miojo:</h3>
+          <div id="editor">
+            <p>Passo -> Ação</p>
+            <form action="get">
+              <select name="passo-1" id="passo-1">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <em>Colocar 300ml de água na panela</em>
+              <br>
+              <select name="passo-2" id="passo-2">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <em>Esperar a água ferver</em>
+              <br>
+              <select name="passo-3" id="passo-3">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <em>Aproveitar</em>
+              <br>
+              <select name="passo-4" id="passo-4">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <em>Separar ingredientes (panela, pacote de miojo, fogão)</em>
+              <br>
+              <select name="passo-5" id="passo-5">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <em>Acrescentar o tempero</em>
+              <br>
+              <select name="passo-6" id="passo-6">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <em>Acender uma boca do fogão</em>
+              <br>
+              <select name="passo-7" id="passo-7">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <em>Colocar panela na boca com fogo aceso</em>
+              <br>
+              <select name="passo-8" id="passo-8">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <em>Mexer o macarrão até desprender</em>
+              <br>
+              <select name="passo-9" id="passo-9">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <em>Colocar macarrão na panela</em>
+              <br>
+              <select name="passo-10" id="passo-10">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <em>Esperar 3 minutos</em>
+              <br>
+            </form>
+          </div>
+          <button id="btn-renderizar" class="button-40">Executar</button>
+        </section>
+        <section id="renderizado">
+          <h3>Veja o resultado aqui:</h3>
+          <div id="iframe-resultado">
+            <h3>Seu algoritmo foi:</h3>
+            <p>Passo 1: <span id="sp-passo-1"></span></p>
+            <p>Passo 2: <span id="sp-passo-2"></span></p>
+            <p>Passo 3: <span id="sp-passo-3"></span></p>
+            <p>Passo 4: <span id="sp-passo-4"></span></p>
+            <p>Passo 5: <span id="sp-passo-5"></span></p>
+            <p>Passo 6: <span id="sp-passo-6"></span></p>
+            <p>Passo 7: <span id="sp-passo-7"></span></p>
+            <p>Passo 8: <span id="sp-passo-8"></span></p>
+            <p>Passo 9: <span id="sp-passo-9"></span></p>
+            <p>Passo 10: <span id="sp-passo-10"></span></p>
+            <h4 id="h4-resultado" style="display: none;">Testamos isso, e o resultado foi:</h4>
+            <img id="img-resultado" src="" alt="" style="max-height: 150px;">
+            <p><span id="mensagem-resultado"></span></p>
+          </div>
+        </section>
+    </section>
+    </section>
+  </main>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>

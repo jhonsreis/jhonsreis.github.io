@@ -1,0 +1,184 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  color: white;
+  text-align: center;
+  font-family: 'Golos Text', sans-serif;
+}
+hr{
+  width: 100%;
+    height: 1px;
+    border: 0px;
+    border-top: 1px solid rgb(38, 41, 49);
+    background-color: #dddddd;
+}
+p{
+  line-height: 1.2em;
+  margin: 12px 0;
+}
+
+main{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+  gap: 10px 0;
+  justify-content: space-between;
+}
+
+section{
+padding: 10px;
+}
+
+#diy{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+#header-content{
+  width: 100%;
+  padding: 1rem 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-img{
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+#conteudo{
+  /* background-color: rgb(255, 255, 136); */
+  flex-basis: 50%;
+
+}
+
+#renderizado{
+  /* background-color: rgb(108, 163, 240); */
+  flex-basis: 50%;
+}
+
+#editor{
+  height: 73%;
+  width: 100%;
+  text-align: left;
+  background-color: #212121;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#editor select{
+  margin: 10px 10px 10px 0;
+  font-size: 20px;
+  width: 80px;
+  padding: 2px;
+  border-radius: 5px;
+  background-color: rgb(38, 41, 49);
+  color: white;
+}
+
+button{
+  padding: 5px;
+  font-size: larger;
+  margin: 10px 0;
+}
+
+#iframe-resultado{
+  background-color: white;
+  width: 100%;
+  height: 80%;
+  color: #212121;
+  border-radius: 10px;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+#video-content, #explanation{
+  width: 49%;
+  padding:0px
+}
+
+#explanation-resume{
+  width: 100%;
+  margin-top:15px;
+  background-color: rgb(31, 32, 39);
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+#exercise{
+  width: 100%;
+}
+/* inicio personalização Scroll */
+::-webkit-scrollbar {
+  width: 12px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(38, 41, 49, 0.8); 
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(78, 78, 78, 0.6); 
+  -webkit-box-shadow: inset 0 0 6px rgba(31, 31, 31, 0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(38,41,49); 
+}
+/* fim personalização Scroll */
+
+#conteudo h3, #renderizado h3{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom:10px;
+  display: block;
+
+}
+/* CSS */
+.button-40 {
+  background-color: #112858;
+  border: 1px solid transparent;
+  border-radius: .75rem;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  padding: .75rem 1.2rem;
+  text-align: center;
+  text-decoration: none #6B7280 solid;
+  text-decoration-thickness: auto;
+  transition-duration: .2s;
+  transition-property: background-color,border-color,color,fill,stroke;
+  transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+}
+
+.button-40:hover {
+  background-color: #374151;
+}
+
+.button-40:focus {
+  box-shadow: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+  .button-40 {
+    padding: .75rem 1.5rem;
+  }
+}
