@@ -7,7 +7,8 @@ require(['vs/editor/editor.main'], function () {
     value: ['for (let i = 0; i < 10; i+= 1) {', '\tconsole.log("Hello world!");', '}'].join('\n'),
     language: 'javascript',
     theme: "vs-dark",
-    fontSize: "18px",
+    fontSize: "16px",
+    
   });
 });
 
